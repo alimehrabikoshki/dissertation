@@ -64,3 +64,8 @@ variable "internal_ip" {
   description = "Private IP address of the instance"
   default = "" #Empty means auto-assignment
 }
+
+variable "instance_zone" {
+  type        = string
+  description = "The zone of the instance"
+}

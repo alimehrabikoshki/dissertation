@@ -36,8 +36,8 @@ variable "machine_type" {
 
 
 
-variable "disk_zone" {
+variable "zone" {
   type        = string
-  description = "zone of the external disk"
+  description = "zone of the instances and disk"
 
 }

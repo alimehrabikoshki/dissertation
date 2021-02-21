@@ -11,7 +11,7 @@ data "google_compute_zones" "available" {
 module "data-disk" {
   source = "../data-disk"
 #  disk_zone = data.google_compute_zones.available.names[1]
-  disk_zone = var.disk_zone
+  disk_zone = var.zone
 }
 
 module "master-node" {
@@ -22,6 +22,7 @@ module "master-node" {
   subnet_id = var.subnet_id
   machine_type = var.machine_type
   preemptible = var.preemptible
+  instance_zone = var.zone
 }
 
 module "worker-node" {
@@ -33,4 +34,5 @@ module "worker-node" {
   subnet_id = var.subnet_id
   machine_type = var.machine_type
 
+  instance_zone = var.zone
 }
