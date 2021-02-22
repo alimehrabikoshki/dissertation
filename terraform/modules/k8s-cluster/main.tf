@@ -8,17 +8,19 @@ data "google_compute_zones" "available" {
 #  source = "../compute-network"
 #}
 
-module "data-disk" {
-  source = "../data-disk"
+#module "data-disk" {
+#  source = "../data-disk"
 #  disk_zone = data.google_compute_zones.available.names[1]
-  disk_zone = var.zone
-}
+#  disk_zone = var.zone
+#}
 
 module "master-node" {
+  count = 1
   source = "../compute-instance"
-  external_disk = module.data-disk.disk_id
-  external_disk_mode = "READ_WRITE"
-  instance_name = "master-${count.index+1}"
+#  external_disk = module.data-disk.disk_id
+#  external_disk_mode = "READ_WRITE"
+  instance_name = "${var.cluster_name}-master-${count.index+1}"
+ # instance_name = var.instance_name
   subnet_id = var.subnet_id
   machine_type = var.machine_type
   preemptible = var.preemptible
@@ -28,9 +30,9 @@ module "master-node" {
 module "worker-node" {
   source = "../compute-instance"
   count = 2
-  external_disk = module.data-disk.disk_id
-  external_disk_mode = "READ_ONLY"
-  instance_name = "worker-${count.index+1}"
+#  external_disk = module.data-disk.disk_id
+#  external_disk_mode = "READ_ONLY"
+  instance_name = "${var.cluster_name}-worker-${count.index+1}"
   subnet_id = var.subnet_id
   machine_type = var.machine_type
 

@@ -10,12 +10,6 @@ variable "gcp_project" {
   default     = "voltaic-reducer-304616"
 }
 
-variable "gcp_auth_file" {
-  type        = string
-  description = "GCP authentication file"
-  default     = "/vm/uni/terraform/auth/service-key/voltaic-reducer-304616-ce2e65eb1f38.json"
-}
-
 variable "disk_name" {
   type        = string
   description = "Name of the persistent disk"

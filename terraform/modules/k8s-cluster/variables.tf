@@ -10,11 +10,11 @@ variable "gcp_project" {
   default     = "voltaic-reducer-304616"
 }
 
-variable "gcp_auth_file" {
+variable "cluster_name" {
   type        = string
-  description = "GCP authentication file"
-  default     = "/vm/uni/terraform/auth/service-key/voltaic-reducer-304616-ce2e65eb1f38.json"
+  description = "Name of the cluster"
 }
+
 
 variable "subnet_id" {
   type        = string

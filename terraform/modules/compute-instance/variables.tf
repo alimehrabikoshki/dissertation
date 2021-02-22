@@ -10,12 +10,6 @@ variable "gcp_project" {
   default     = "voltaic-reducer-304616"
 }
 
-variable "gcp_auth_file" {
-  type        = string
-  description = "GCP authentication file"
-  default     = "/vm/uni/terraform/auth/service-key/voltaic-reducer-304616-ce2e65eb1f38.json"
-}
-
 variable "instance_name" {
   type        = string
   description = "Name of the compute instance"
@@ -44,21 +38,21 @@ variable "preemptible" {
   description = "Select whether or not to provision reduced cost preemptible vm's"
   default = true #Change to false when doing final tests
 }
-variable "external_disk" {
-  type        = string
-  description = "ID of external disk to attach"
-}
-variable "external_disk_mode" {
-  type        = string
-  description = "Read/write or read/only access to external disk"
- # default = "READ_ONLY" #READ_WRITE FOR MASTERS
-}
-
-variable "external_disk_device_name" {
-  type        = string
-  description = "Device name of the external disk, to go in /dev/by-id/"
-  default = "ext"
-}
+//variable "external_disk" {
+//  type        = string
+//  description = "ID of external disk to attach"
+//}
+//variable "external_disk_mode" {
+//  type        = string
+//  description = "Read/write or read/only access to external disk"
+// # default = "READ_ONLY" #READ_WRITE FOR MASTERS
+//}
+//
+//variable "external_disk_device_name" {
+//  type        = string
+//  description = "Device name of the external disk, to go in /dev/by-id/"
+//  default = "ext"
+//}
 variable "internal_ip" {
   type        = string
   description = "Private IP address of the instance"

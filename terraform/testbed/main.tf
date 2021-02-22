@@ -13,10 +13,12 @@ module "cluster1" {
   source = "../modules/k8s-cluster"
   zone = data.google_compute_zones.available.names[1]
   subnet_id = module.k8s-testnet.subnet_id
+  cluster_name = "cluster1"
 }
 
 module "cluster2" {
   source = "../modules/k8s-cluster"
   zone = data.google_compute_zones.available.names[2]
   subnet_id = module.k8s-testnet.subnet_id
+  cluster_name = "cluster2"
 }
