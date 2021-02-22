@@ -35,6 +35,6 @@ module "worker-node" {
   instance_name = "${var.cluster_name}-worker-${count.index+1}"
   subnet_id = var.subnet_id
   machine_type = var.machine_type
-
+  preemptible = var.preemptible
   instance_zone = var.zone
 }
