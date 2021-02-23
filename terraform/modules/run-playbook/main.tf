@@ -1,8 +1,7 @@
 resource "null_resource" "run-playbook" {
     provisioner "remote-exec" {
         inline = [
-            "sudo apt update",
-            "sudo apt install python3 -y"]
+            "echo ''"]
 
         connection {
             type = "ssh"

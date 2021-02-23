@@ -28,6 +28,6 @@
 
    - name: Configure kubectl command auto-completion.
      lineinfile:
-       dest: /home/{{ ansible_user }}/.bashrc
+       dest: /home/{{ ansible_ssh_user }}/.bashrc
        line: 'source <(kubectl completion bash)'
        insertafter: EOF
