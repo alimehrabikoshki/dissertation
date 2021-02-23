@@ -7,6 +7,12 @@ resource "tls_private_key" "ssh_key" {
   algorithm   = "RSA"
   rsa_bits = "4096"
 }
+
+resource "null_resource" "save_ssh_key"{
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.ssh_key.private_key_pem}' > ../auth/ssh-key/ssh-key.pem"
+  }
+}
 module "k8s-testnet" {
   source = "../modules/compute-network"
   cidr_range = var.cidr_range
@@ -21,7 +27,7 @@ resource "google_compute_firewall" "k8s-allow-traffic" {
 #  source_ranges = ["10.0.0.0/8"]
 }
 
-module "cluster" {
+module "provision-cluster" {
   count = 2
   source = "../modules/k8s-cluster"
   zone = data.google_compute_zones.available.names[count.index+1]
@@ -33,12 +39,15 @@ module "cluster" {
 module "configure-cluster" {
   count = 2
   source = "../modules/configure-cluster"
-  cluster_master_ip = module.cluster[count.index].master-node-ip
-  cluster_worker1_ip = module.cluster[count.index].worker1-node-ip
-  cluster_worker2_ip = module.cluster[count.index].worker2-node-ip
+  cluster_master_ip = module.provision-cluster[count.index].master-node-public-ip
+  cluster_worker1_ip = module.provision-cluster[count.index].worker1-node-public-ip
+  cluster_worker2_ip = module.provision-cluster[count.index].worker2-node-public-ip
+  cluster_master_internal_ip = module.provision-cluster[count.index].master-node-ip
+  cluster_worker1_internal_ip = module.provision-cluster[count.index].worker1-node-ip
+  cluster_worker2_internal_ip = module.provision-cluster[count.index].worker2-node-ip
   k8s_ssh_private_key = tls_private_key.ssh_key.private_key_pem
-  cni_playbook_path = "../../../ansible/modules/CNIs/calico/calico_master.yaml"
-
+  cni_playbook_path = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/CNIs/calico/calico_master.yaml"
+  cluster = "cluster${count.index+1}"
 }
 //
 //module "cluster2" {

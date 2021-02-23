@@ -8,20 +8,38 @@
   connection: ssh
 
   tasks:
-   - name: Copy join command file
-     become: yes
-     become_method: sudo
-     become_user: root
-     copy:
-       src: ../join_command
-       dest: /tmp/join_command
-       mode: 0777
-   - name: join worker nodes to cluster
-     become: yes
-     become_method: sudo
-     become_user: root
-     command: sh /tmp/join_command
-     register: join_result
-   - debug:
-       msg: "{{ join_result.stdout }}"
+    - name: set kubernetes cgroup driver to systemd
+      lineinfile:
+        path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+        line: 'Environment="KUBELET_EXTRA_ARGS=--cgroup-driver=systemd"'
+    - name: set docker cgroup driver to systemd
+      lineinfile:
+        path: /etc/docker/daemon.json
+        line: |
+          {
+            "exec-opts": ["native.cgroupdriver=systemd"]
+          }
+        create: yes
+    - name: Restart docker
+      shell: "service docker restart"
+
+    - name: Reset cluster
+      shell: "kubeadm reset --force"
+      register: reset_cluster
+    - name: Copy join command file
+      become: yes
+      become_method: sudo
+      become_user: root
+      copy:
+        src: ../{{ cluster }}/join_command
+        dest: /tmp/join_command
+        mode: 0777
+    - name: join worker nodes to cluster
+      become: yes
+      become_method: sudo
+      become_user: root
+      command: sh /tmp/join_command
+      register: join_result
+    - debug:
+        msg: "{{ join_result.stdout }}"
 ...

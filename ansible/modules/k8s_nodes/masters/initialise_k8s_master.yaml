@@ -7,7 +7,7 @@
   gather_facts: yes
   connection: ssh
   vars:
-    pid_cidr: "10.20.0.0/24"
+    pod_cidr: "10.20.0.0/24"
     service_cidr: "10.30.0.0/24"
 
   tasks:
@@ -20,17 +20,17 @@
       shell: |
         kubeadm init --service-cidr {{ service_cidr }} \
                      --pod-network-cidr {{ pod_cidr }} \
-                     --apiserver-advertise-address {{ ansible_ssh_host }}
+                     --apiserver-advertise-address {{ cluster_master_internal_ip }}
 
     - name: Create k8s config folder in home directory
       become_user: k8s
       become_method: sudo
       become: yes
       file:
-        path: /home/{{ remote_user }}/.kube
+        path: /home/{{ ansible_ssh_user }}/.kube
         state: directory
-        owner: "{{ remote_user }}"
-        group: "{{ remote_user }}"
+        owner: "{{ ansible_ssh_user }}"
+        group: "{{ ansible_ssh_user }}"
         mode: 0755
       register: create_folder
 
@@ -41,10 +41,10 @@
       become: yes
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/{{ remote_user }}/.kube/config
+        dest: /home/{{ ansible_ssh_user }}/.kube/config
         remote_src: yes
-        owner: "{{ remote_user }}"
-        group: "{{ remote_user }}"
+        owner: "{{ ansible_ssh_user }}"
+        group: "{{ ansible_ssh_user }}"
         mode: '0644'
 
 

@@ -1,4 +1,4 @@
- ---
+---
 - hosts: all
   remote_user: k8s
   become: yes
@@ -24,7 +24,7 @@
        msg: "{{ join_command.stdout }}"
 
    - name: Save output to file
-     local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="../../k8s_nodes/join_command" mode=0777
+     local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="../../k8s_nodes/{{ cluster }}/join_command" mode=0777
 
    - name: Configure kubectl command auto-completion.
      lineinfile:
