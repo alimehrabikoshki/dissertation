@@ -14,6 +14,7 @@ data "google_compute_zones" "available" {
 #  disk_zone = var.zone
 #}
 
+
 module "master-node" {
   count = 1
   source = "../compute-instance"
@@ -25,6 +26,7 @@ module "master-node" {
   machine_type = var.machine_type
   preemptible = var.preemptible
   instance_zone = var.zone
+  ssh_pubkey = var.ssh_pubkey
 }
 
 module "worker-node" {
@@ -37,4 +39,5 @@ module "worker-node" {
   machine_type = var.machine_type
   preemptible = var.preemptible
   instance_zone = var.zone
+  ssh_pubkey = var.ssh_pubkey
 }

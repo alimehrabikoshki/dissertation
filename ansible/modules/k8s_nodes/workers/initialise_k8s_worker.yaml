@@ -1,0 +1,27 @@
+---
+- hosts: all
+  remote_user: k8s
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+   - name: Copy join command file
+     become: yes
+     become_method: sudo
+     become_user: root
+     copy:
+       src: ../join_command
+       dest: /tmp/join_command
+       mode: 0777
+   - name: join worker nodes to cluster
+     become: yes
+     become_method: sudo
+     become_user: root
+     command: sh /tmp/join_command
+     register: join_result
+   - debug:
+       msg: "{{ join_result.stdout }}"
+...

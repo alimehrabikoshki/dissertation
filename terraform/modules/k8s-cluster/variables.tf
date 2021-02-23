@@ -39,5 +39,9 @@ variable "machine_type" {
 variable "zone" {
   type        = string
   description = "zone of the instances and disk"
+}
 
+variable "ssh_pubkey" {
+  type        = string
+  description = "the public key of the SSH account, in ssh-rsa format"
 }

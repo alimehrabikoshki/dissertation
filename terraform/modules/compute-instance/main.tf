@@ -6,13 +6,11 @@
 resource "google_compute_instance" "instance" {
 
   project       = var.gcp_project
- # name          = "${var.instance_name}-${count.index+1}"
   name          = var.instance_name
   machine_type  = var.machine_type #"e2-standard-2"
   zone = var.instance_zone
-
+  can_ip_forward = true
   boot_disk {
-#    device_name = "${var.instance_name}-${count.index+1}-boot_disk"
     device_name = "${var.instance_name}-boot_disk"
     auto_delete = true
     initialize_params {
@@ -23,11 +21,16 @@ resource "google_compute_instance" "instance" {
   network_interface {
     subnetwork = var.subnet_id
     network_ip = var.internal_ip
+    access_config {}
   }
+
 
   scheduling {
     preemptible = var.preemptible
     automatic_restart = false
+  }
+  metadata = {
+    ssh-keys = "${var.ssh_user}:${var.ssh_pubkey}"
   }
 }
 

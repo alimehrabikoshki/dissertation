@@ -63,3 +63,15 @@ variable "instance_zone" {
   type        = string
   description = "The zone of the instance"
 }
+
+variable "ssh_user" {
+  type        = string
+  description = "username of the SSH account"
+  default = "k8s"
+}
+
+
+variable "ssh_pubkey" {
+  type        = string
+  description = "the public key of the SSH account, in ssh-rsa format"
+}
