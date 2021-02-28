@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nettest-server-deployment
+  labels:
+    app: nettest-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nettest-server
+  template:
+    metadata:
+      labels:
+        app: nettest-server
+    spec:
+      containers:
+      - name: nettest-server
+        image: #push image to docker hub then fill ths in
+        args: ['-s']
+        ports:
+        - containerPort: 5201
+          name: server
+      terminationGracePeriodSeconds: 0
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: iperf3-server
+spec:
+  selector:
+    app: iperf3-server
+  ports:
+  - protocol: TCP
+    port: 5201
+    targetPort: server
