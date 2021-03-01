@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nettest-client-deployment
+  labels:
+    app: nettest-client
+spec:
+  selector:
+    matchLabels:
+      app: nettest-client
+  template:
+    metadata:
+      labels:
+        app: nettest-client
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - nettest-server
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: nettest-client
+        image: alimehrabikoshki/nettest-client
+        command: ["/bin/bash",  "-c"]
+        args: ["bc"]
+        env:
+          - name: SERVER_IP
+            value: %SERVER_IP% #Modify per test using ansible/bash
+      terminationGracePeriodSeconds: 0
+      restartPolicy: Always
+
+

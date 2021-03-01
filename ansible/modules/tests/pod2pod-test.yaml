@@ -1,0 +1,81 @@
+---
+- hosts: all
+  remote_user: k8s
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - name: Copy nettest server service yaml
+      become_user: root
+      become_method: sudo
+      become: yes
+      copy:
+        src: /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/deployments/nettest-server-service.yaml
+        dest: /tmp/nettest-server-service.yaml
+        owner: k8s
+        group: root
+        mode: '0777'
+    - name: Copy network policy
+      become_user: root
+      become_method: sudo
+      become: yes
+      copy:
+        src: /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/network-policy/allow-all.yaml
+        dest: /tmp/allow-all.yaml
+        owner: k8s
+        group: root
+        mode: '0777'
+    - name: Initialise nettest server service and network policy
+      become_user: k8s
+      become_method: sudo
+      become: yes
+      command: "{{ item }}"
+      with_items:
+         - kubectl apply -f /tmp/allow-all.yaml
+         - kubectl apply -f /tmp/nettest-server-service.yaml
+    - name: Save nettest-server service IP
+      become_user: k8s
+      become_method: sudo
+      become: yes
+      shell: "kubectl describe svc/nettest-server | grep IP: | awk '{print $2;}'"
+      register: SERVER_IP
+    - debug:
+        msg: "{{ SERVER_IP.stdout }}"
+    - name: Save ip to client yaml
+      become: false
+      local_action: command "sed 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g' -i /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/deployments/nettest-client-deployment.yaml"
+    - name: Copy nettest client deployment yaml
+      become_user: root
+      become_method: sudo
+      become: yes
+      copy:
+        src:  /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/deployments/nettest-client-deployment.yaml
+        dest: /tmp/nettest-client-deployment.yaml
+        owner: k8s
+        group: root
+        mode: '0777'
+    - name: Initialise nettest client
+      become_user: k8s
+      become_method: sudo
+      become: yes
+      command: "{{ item }}"
+      with_items:
+         - kubectl apply -f /tmp/nettest-client-deployment.yaml
+    - name: Copy test script
+      become_user: root
+      become_method: sudo
+      become: yes
+      copy:
+        src:  /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/run_test.sh
+        dest: /tmp/run_test.sh
+        owner: k8s
+        group: root
+        mode: '0777'
+    - name: Run test script
+      become_user: k8s
+      become_method: sudo
+      become: yes
+      command: '/tmp/run_test.sh'

@@ -1,14 +1,3 @@
-
-/*
-Each playbook run has:
-playbook
-Master IP
-Worker IPs
-private key
-target host
-*/
-
-
 variable "cluster_master_ip" {
   type        = string
   description = "The external IP of the current cluster master"
@@ -46,10 +35,5 @@ variable "cluster" {
 variable "k8s_ssh_private_key" {
   type        = string
   description = "k8s user private key"
-}
-
-variable "cni_playbook_path" {
-  type        = string
-  description = "relative path to CNI playbook(s) (FROM CONFIGURE-CLUSTER DIRECTORY)"
 }
 
