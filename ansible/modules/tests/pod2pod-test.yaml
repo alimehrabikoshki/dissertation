@@ -44,9 +44,6 @@
       register: SERVER_IP
     - debug:
         msg: "{{ SERVER_IP.stdout }}"
-    - name: Save ip to client yaml
-      become: false
-      local_action: command "sed 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g' -i /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/deployments/nettest-client-deployment.yaml"
     - name: Copy nettest client deployment yaml
       become_user: root
       become_method: sudo
@@ -57,6 +54,9 @@
         owner: k8s
         group: root
         mode: '0777'
+    - name: Save ip to client yaml
+      become: false
+      command: "sed -i 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g'  /tmp/nettest-client-deployment.yaml"
     - name: Initialise nettest client
       become_user: k8s
       become_method: sudo
@@ -74,8 +74,10 @@
         owner: k8s
         group: root
         mode: '0777'
+      register: script_copied
     - name: Run test script
+      when: script_copied is succeeded
       become_user: k8s
       become_method: sudo
       become: yes
-      command: '/tmp/run_test.sh'
+      command: '/bin/bash /tmp/run_test.sh'

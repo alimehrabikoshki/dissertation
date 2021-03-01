@@ -14,8 +14,8 @@
      become: yes
      command: "{{ item }}"
      with_items:
-        - kubectl apply -f https://docs.projectcalico.org/v3.16/manifests/calico.yaml
-        - kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+        - /usr/bin/kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+        - /usr/bin/kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 
    - name: Save cluster join command
      shell: kubeadm token create  --print-join-command

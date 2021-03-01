@@ -1,5 +1,5 @@
 #!/bin/bash
-kubectl exec nettest-client /bin/bash -c iperf3 --client ${SERVER_IP} -t 60 --set-mss 1460 --congestion=bbr --logfile iperf_results
+iperf3 --client ${SERVER_IP} -t 60 --set-mss 1460 --congestion=bbr --logfile iperf_results
 epoc=$(date "+%s")
 
 IFS=$'\n'
