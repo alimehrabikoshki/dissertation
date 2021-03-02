@@ -26,8 +26,9 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: nettest-server
-        image: alimehrabikoshki/nettest-server
-   #     args: ['--server --daemon']
+        image: alimehrabikoshki/nettest-server:v3
+        imagePullPolicy: Always
+        args: ['--server --daemon']
         ports:
         - containerPort: 5201
           name: iperf-port

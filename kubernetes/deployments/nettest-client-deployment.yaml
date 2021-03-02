@@ -25,9 +25,10 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: nettest-client
-        image: alimehrabikoshki/nettest-client
+        image:  alimehrabikoshki/nettest-client:v3.1
+        imagePullPolicy: Always
         command: ["/bin/bash",  "-c"]
-        args: ["bc"]
+        args: ["tail -f /dev/null"]
         env:
           - name: SERVER_IP
             value: %SERVER_IP% #Modify per test using ansible/bash

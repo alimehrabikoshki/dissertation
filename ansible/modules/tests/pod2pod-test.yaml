@@ -18,7 +18,9 @@
         owner: k8s
         group: root
         mode: '0777'
+      register: server_yaml_copied
     - name: Copy network policy
+      when: server_yaml_copied is succeeded
       become_user: root
       become_method: sudo
       become: yes
@@ -28,7 +30,9 @@
         owner: k8s
         group: root
         mode: '0777'
+      register: policy_copied
     - name: Initialise nettest server service and network policy
+      when: policy_copied is succeeded
       become_user: k8s
       become_method: sudo
       become: yes
@@ -64,20 +68,12 @@
       command: "{{ item }}"
       with_items:
          - kubectl apply -f /tmp/nettest-client-deployment.yaml
-    - name: Copy test script
-      become_user: root
-      become_method: sudo
-      become: yes
-      copy:
-        src:  /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/run_test.sh
-        dest: /tmp/run_test.sh
-        owner: k8s
-        group: root
-        mode: '0777'
-      register: script_copied
+      register: client_init
     - name: Run test script
-      when: script_copied is succeeded
+      when: client_init is succeeded
       become_user: k8s
       become_method: sudo
       become: yes
-      command: '/bin/bash /tmp/run_test.sh'
+      command: |
+        POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");
+        /usr/bin/kubectl exec $POD  /bin/bash /nettest/run_test.sh;

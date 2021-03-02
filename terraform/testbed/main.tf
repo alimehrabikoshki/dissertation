@@ -37,6 +37,7 @@ module "provision-cluster" {
 }
 
 module "configure-cluster" {
+  depends_on = [module.provision-cluster]
   count = 2
   source = "../modules/configure-cluster"
   cluster_master_ip = module.provision-cluster[count.index].master-node-public-ip
@@ -51,6 +52,7 @@ module "configure-cluster" {
 }
 
 module "test-suite" {
+  depends_on = [module.configure-cluster]
   source = "../modules/test-suite"
 
   count = 1
