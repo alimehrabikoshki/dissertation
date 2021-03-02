@@ -40,6 +40,11 @@
       with_items:
          - kubectl apply -f /tmp/allow-all.yaml
          - kubectl apply -f /tmp/nettest-server-service.yaml
+    - name: Wait for  nettest-server pod to initialise
+      become: yes
+      become_user: k8s
+      become_method: sudo
+      shell: "kubectl wait --for=condition=Ready pods --selector app=nettest-server --timeout=60s"
     - name: Save nettest-server service IP
       become_user: k8s
       become_method: sudo
@@ -68,12 +73,15 @@
       command: "{{ item }}"
       with_items:
          - kubectl apply -f /tmp/nettest-client-deployment.yaml
-      register: client_init
+    - name: Wait for  nettest-client pod to initialise
+      become: yes
+      become_user: k8s
+      become_method: sudo
+      shell: "kubectl wait --for=condition=Ready pods --selector app=nettest-client --timeout=60s"
     - name: Run test script
-      when: client_init is succeeded
       become_user: k8s
       become_method: sudo
       become: yes
       command: |
         POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");
-        /usr/bin/kubectl exec $POD  /bin/bash /nettest/run_test.sh;
+        /usr/bin/kubectl exec --stdin --tty $POD -- /bin/bash /nettest/run_test.sh;

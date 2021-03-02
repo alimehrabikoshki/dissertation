@@ -1,5 +1,6 @@
 #!/bin/bash
-iperf3 --client ${SERVER_IP} -t 60 --set-mss 1460 --congestion=bbr --logfile iperf_results.txt
+iperf3 --client ${SERVER_IP} -t 60 --set-mss 1460 --logfile iperf_results.txt -i 1 -f m -J &
+sleep 60
 epoc=$(date "+%s")
 
 IFS=$'\n'
