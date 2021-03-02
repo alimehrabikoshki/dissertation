@@ -82,6 +82,4 @@
       become_user: k8s
       become_method: sudo
       become: yes
-      command: |
-        POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");
-        /usr/bin/kubectl exec --stdin --tty $POD -- /bin/bash /nettest/run_test.sh;
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c  ./run_test.sh'
