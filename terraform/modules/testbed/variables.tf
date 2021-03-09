@@ -23,8 +23,7 @@ variable "gcp_project" {
 variable "gcp_auth_file" { 
   type        = string 
   description = "GCP authentication file"
-  default     = "/vm/uni/terraform/auth/service-key/voltaic-reducer-304616-ce2e65eb1f38.json"
-} 
+}
 
 variable "bucket-name" { 
   type        = string 

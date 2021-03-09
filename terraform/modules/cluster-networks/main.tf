@@ -13,7 +13,7 @@ module "k8s-testnet-regionB" {
 }
 
 resource "google_compute_firewall" "k8s-allow-traffic-regionA" {
-  name    = "allow-regionA-firewall"
+  name    = "allow-regiona-firewall"
   network = module.k8s-testnet-regionA.network_id
   allow {
     protocol = "all"
@@ -21,21 +21,21 @@ resource "google_compute_firewall" "k8s-allow-traffic-regionA" {
 }
 
 resource "google_compute_firewall" "k8s-allow-traffic-regionB" {
-  name = "allow-regionB-firewall"
+  name = "allow-regionb-firewall"
   network = module.k8s-testnet-regionB.network_id
   allow {
     protocol = "all"
   }
 }
 
-resource "google_compute_network_peering" "peerA" {
-  name         = "peerA"
+resource "google_compute_network_peering" "peer1" {
+  name         = "peer1"
   network      = module.k8s-testnet-regionA.network_id
   peer_network = module.k8s-testnet-regionB.network_id
 }
 
-resource "google_compute_network_peering" "peerB" {
-  name         = "peerB"
+resource "google_compute_network_peering" "peer2" {
+  name         = "peer2"
   network      = module.k8s-testnet-regionB.network_id
   peer_network = module.k8s-testnet-regionA.network_id
 }

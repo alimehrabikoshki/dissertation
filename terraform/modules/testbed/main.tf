@@ -116,7 +116,7 @@ module "configure-regionB-cluster" {
   count = 1
   source = "../configure-cluster"
 
-  cluster_master_ip = module.provision-regionB-cluster.master-node-public-ip
+  cluster_master_ip = module.provision-regionB-cluster[count.index].master-node-public-ip
   cluster_worker1_ip = module.provision-regionB-cluster[count.index].worker1-node-public-ip
   cluster_worker2_ip = module.provision-regionB-cluster[count.index].worker2-node-public-ip
   cluster_master_internal_ip = module.provision-regionB-cluster[count.index].master-node-ip
