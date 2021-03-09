@@ -28,7 +28,8 @@
         mode: '0777'
     - name: Save ip to client yaml
       become: false
-      command: "sed -i 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g'  /tmp/nettest-client-deployment.yaml"
+#      command: "sed -i 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g'  /tmp/nettest-client-deployment.yaml"
+      command: "sed -i 's/%SERVER_IP%/{{ cluster1_worker1_internal_ip }}/g'  /tmp/nettest-client-deployment.yaml"
     - name: Initialise nettest client
       become_user: k8s
       become_method: sudo
@@ -45,4 +46,4 @@
       become_user: k8s
       become_method: sudo
       become: yes
-      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c  ./run_test.sh'
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c  /nettest/run_test.sh'
