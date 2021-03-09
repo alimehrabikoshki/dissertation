@@ -1,1 +1,1 @@
-kubeadm join 10.10.0.5:6443 --token flpx62.pf1woho6dyjpyr7k     --discovery-token-ca-cert-hash sha256:2737bca7198e730c4cc6e378375fec7f266b6b639f5f9a58dae49fe56b858629 
+kubeadm join 10.10.0.4:6443 --token 919539.3t8n76j25eipfl9j     --discovery-token-ca-cert-hash sha256:a36bddf13fadf3b6c9ba45f28d2322404befb77334c407faa8fe3719d814282b 

@@ -16,6 +16,7 @@ EOF
 module "deploy-nettest-server" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
+
     cluster_worker1_ip = var.cluster_worker1_ip
     cluster_worker2_ip = var.cluster_worker2_ip
     k8s_ssh_private_key = var.k8s_ssh_private_key
@@ -58,12 +59,11 @@ resource "null_resource" "save_interzone_vars"{
   depends_on = [module.intrazone-test]
   provisioner "local-exec" {
     command = <<EOT
-cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
+echo "
 {
   "CNI": "${var.cni}",
   "TESTCASE": "interzone"
-}
-EOF
+} " > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
     EOT
   }
 }
@@ -85,12 +85,11 @@ resource "null_resource" "save_interregion_vars"{
   depends_on = [module.interzone-test]
   provisioner "local-exec" {
     command = <<EOT
-cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
+echo "
 {
   "CNI": "${var.cni}",
   "TESTCASE": "interregion"
-}
-EOF
+} " > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
     EOT
   }
 }
