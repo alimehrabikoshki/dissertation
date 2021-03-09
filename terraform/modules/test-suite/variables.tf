@@ -28,6 +28,20 @@ variable "cluster_worker2_internal_ip" {
   description = "The internal IP of worker 2"
 }
 
+variable "cluster1_master_public_ip" {
+  type        = string
+  description = "The public IP of cluster 1 master"
+}
+variable "cluster2_master_public_ip" {
+  type        = string
+  description = "The public IP of cluster 2 master"
+}
+variable "cluster3_master_public_ip" {
+  type        = string
+  description = "The public IP of cluster 3 master"
+}
+
+
 variable "cluster" {
   type = string
   description = "cluster number"
@@ -37,3 +51,7 @@ variable "k8s_ssh_private_key" {
   description = "k8s user private key"
 }
 
+variable "cni" {
+  type = string
+  description = "The CNI being tested"
+}

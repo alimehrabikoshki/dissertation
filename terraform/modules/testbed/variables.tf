@@ -45,3 +45,8 @@ variable "regionB-cidr_range" {
   description = "The regionB subnet CIDR range"
   default     = "10.20.0.0/24"
 }
+variable "cni" {
+  type        = string
+  description = "The CNI being tested"
+  default     = "calico"
+}

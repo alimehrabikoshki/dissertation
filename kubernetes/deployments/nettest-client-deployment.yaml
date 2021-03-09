@@ -32,6 +32,10 @@ spec:
         env:
           - name: SERVER_IP
             value: %SERVER_IP% #Modify per test using ansible/bash
+          - name: CNI
+            value: %CNI%
+          - name: TESTCASE
+            value: %TESTCASE%
       terminationGracePeriodSeconds: 0
       restartPolicy: Always
 

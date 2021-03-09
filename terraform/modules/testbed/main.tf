@@ -13,21 +13,21 @@ resource "null_resource" "save_ansible_vars"{
     command = <<EOT
         cat <<\EOF >> /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/cluster_ips.json
         {
-          "cluster1_master_external_ip": "${local.cluster1_master_external_ip }",
-          "cluster1_worker1_external_ip":"${local.cluster1_worker1_external_ip}",
-          "cluster1_worker2_external_ip": "${local.cluster1_worker2_external_ip}",
+          "cluster1_master_public_ip": "${local.cluster1_master_public_ip }",
+          "cluster1_worker1_public_ip":"${local.cluster1_worker1_public_ip}",
+          "cluster1_worker2_public_ip": "${local.cluster1_worker2_public_ip}",
           "cluster1_master_internal_ip": "${local.cluster1_master_internal_ip }",
           "cluster1_worker1_internal_ip": "${local.cluster1_worker1_internal_ip}",
           "cluster1_worker2_internal_ip": "${local.cluster1_worker2_internal_ip}",
-          "cluster2_master_external_ip": "${local.cluster2_master_external_ip }",
-          "cluster2_worker1_external_ip": "${local.cluster2_worker1_external_ip}",
-          "cluster2_worker2_external_ip": "${local.cluster2_worker2_external_ip}",
+          "cluster2_master_public_ip": "${local.cluster2_master_public_ip }",
+          "cluster2_worker1_public_ip": "${local.cluster2_worker1_public_ip}",
+          "cluster2_worker2_public_ip": "${local.cluster2_worker2_public_ip}",
           "cluster2_master_internal_ip": "${local.cluster2_master_internal_ip }",
           "cluster2_worker1_internal_ip": "${local.cluster2_worker1_internal_ip}",
           "cluster2_worker2_internal_ip": "${local.cluster2_worker2_internal_ip}",
-          "cluster3_master_external_ip": "${local.cluster3_master_external_ip }",
-          "cluster3_worker1_external_ip": "${local.cluster3_worker1_external_ip}",
-          "cluster3_worker2_external_ip": "${local.cluster3_worker2_external_ip}",
+          "cluster3_master_public_ip": "${local.cluster3_master_public_ip }",
+          "cluster3_worker1_public_ip": "${local.cluster3_worker1_public_ip}",
+          "cluster3_worker2_public_ip": "${local.cluster3_worker2_public_ip}",
           "cluster3_master_internal_ip": "${local.cluster3_master_internal_ip }",
           "cluster3_worker1_internal_ip": "${local.cluster3_worker1_internal_ip}",
           "cluster3_worker2_internal_ip": "${local.cluster3_worker2_internal_ip}"
@@ -37,21 +37,21 @@ resource "null_resource" "save_ansible_vars"{
   }
 }
 locals {
-  cluster1_master_external_ip = module.provision-regionA-clusters.0.master-node-public-ip
-  cluster1_worker1_external_ip = module.provision-regionA-clusters.0.worker1-node-public-ip
-  cluster1_worker2_external_ip = module.provision-regionA-clusters.0.worker2-node-public-ip
+  cluster1_master_public_ip = module.provision-regionA-clusters.0.master-node-public-ip
+  cluster1_worker1_public_ip = module.provision-regionA-clusters.0.worker1-node-public-ip
+  cluster1_worker2_public_ip = module.provision-regionA-clusters.0.worker2-node-public-ip
   cluster1_master_internal_ip = module.provision-regionA-clusters.0.master-node-ip
   cluster1_worker1_internal_ip = module.provision-regionA-clusters.0.worker1-node-ip
   cluster1_worker2_internal_ip = module.provision-regionA-clusters.0.worker2-node-ip
-  cluster2_master_external_ip = module.provision-regionA-clusters.1.master-node-public-ip
-  cluster2_worker1_external_ip = module.provision-regionA-clusters.1.worker1-node-public-ip
-  cluster2_worker2_external_ip = module.provision-regionA-clusters.1.worker2-node-public-ip
+  cluster2_master_public_ip = module.provision-regionA-clusters.1.master-node-public-ip
+  cluster2_worker1_public_ip = module.provision-regionA-clusters.1.worker1-node-public-ip
+  cluster2_worker2_public_ip = module.provision-regionA-clusters.1.worker2-node-public-ip
   cluster2_master_internal_ip = module.provision-regionA-clusters.1.master-node-ip
   cluster2_worker1_internal_ip = module.provision-regionA-clusters.1.worker1-node-ip
   cluster2_worker2_internal_ip = module.provision-regionA-clusters.1.worker2-node-ip
-  cluster3_master_external_ip = module.provision-regionB-cluster.0.master-node-public-ip
-  cluster3_worker1_external_ip = module.provision-regionB-cluster.0.worker1-node-public-ip
-  cluster3_worker2_external_ip = module.provision-regionB-cluster.0.worker2-node-public-ip
+  cluster3_master_public_ip = module.provision-regionB-cluster.0.master-node-public-ip
+  cluster3_worker1_public_ip = module.provision-regionB-cluster.0.worker1-node-public-ip
+  cluster3_worker2_public_ip = module.provision-regionB-cluster.0.worker2-node-public-ip
   cluster3_master_internal_ip = module.provision-regionB-cluster.0.master-node-ip
   cluster3_worker1_internal_ip = module.provision-regionB-cluster.0.worker1-node-ip
   cluster3_worker2_internal_ip = module.provision-regionB-cluster.0.worker2-node-ip
@@ -141,13 +141,9 @@ module "test-suite" {
   cluster_master_internal_ip = module.provision-regionA-clusters[count.index].master-node-ip
   cluster_worker1_internal_ip = module.provision-regionA-clusters[count.index].worker1-node-ip
   cluster_worker2_internal_ip = module.provision-regionA-clusters[count.index].worker2-node-ip
+  cluster1_master_public_ip = local.cluster1_master_public_ip
+  cluster2_master_public_ip = local.cluster2_master_public_ip
+  cluster3_master_public_ip = local.cluster3_master_public_ip
   k8s_ssh_private_key = tls_private_key.ssh_key.private_key_pem
+  cni = var.cni
 }
-//
-//module "cluster2" {
-//  source = "../modules/k8s-cluster"
-//  zone = data.google_compute_zones.available.names[2]
-//  subnet_id = module.k8s-testnet.subnet_id
-//  cluster_name = "cluster2"
-//  ssh_pubkey = tls_private_key.ssh_key.public_key_openssh
-//}

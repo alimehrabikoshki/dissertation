@@ -26,10 +26,21 @@
         owner: k8s
         group: root
         mode: '0777'
-    - name: Save ip to client yaml
-      become: false
-#      command: "sed -i 's/%SERVER_IP%/{{ SERVER_IP.stdout_lines[0] }}/g'  /tmp/nettest-client-deployment.yaml"
-      command: "sed -i 's/%SERVER_IP%/{{ cluster1_worker1_internal_ip }}/g'  /tmp/nettest-client-deployment.yaml"
+    - name: Save server IP env variable
+      replace:
+        path: /tmp/nettest-client-deployment.yaml
+        regexp: '%SERVER_IP%'
+        replace: "{{ cluster1_worker1_internal_ip }}"
+    - name: Save CNI env variable
+      replace:
+        path: /tmp/nettest-client-deployment.yaml
+        regexp: '%CNI%'
+        replace: "{{ CNI }}"
+    - name: Save testcase env variable
+      replace:
+        path: /tmp/nettest-client-deployment.yaml
+        regexp: '%TESTCASE%'
+        replace: "{{ TESTCASE }}"
     - name: Initialise nettest client
       become_user: k8s
       become_method: sudo
