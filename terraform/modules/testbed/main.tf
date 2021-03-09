@@ -91,7 +91,6 @@ module "provision-regionB-cluster" {
   count = 1
   depends_on = [module.provision-cluster-networks]
 
-#  zone = var.gcp_regionB-zone
   subnet_id = module.provision-cluster-networks.regionB-subnet_id
   cluster_name = "cluster${count.index+1}"
   ssh_pubkey = tls_private_key.ssh_key.public_key_openssh

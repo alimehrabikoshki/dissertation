@@ -49,7 +49,8 @@
       become_user: k8s
       become_method: sudo
       become: yes
-      shell: "kubectl describe svc/nettest-server | grep IP: | awk '{print $2;}'"
+      shell: " kubectl describe pods --selector app=nettest-server | grep Node:  | awk '{print $2}' | cut -d '/' -f2"
       register: SERVER_IP
     - debug:
         msg: "{{ SERVER_IP.stdout }}"
+    - local_action: copy content={{ SERVER_IP.stdout }} dest=/mnt/c/Users/Ali/PycharmProjects/dissertation/bash/serverip.txt

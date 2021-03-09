@@ -26,19 +26,20 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: nettest-server
-        image: alimehrabikoshki/nettest-server:v4
+        image: alimehrabikoshki/nettest-server:v5
+        command: [ "/bin/bash",  "-c" ]
+        args: [ "tail -f /dev/null" ]
         imagePullPolicy: Always
-        args: ['-s']
         ports:
         - containerPort: 5201
           name: iperf-port
           protocol: TCP
-        - containerPort: 80
+        - containerPort: 5201
           name: iperf-udp-port
-          protocol: TCP
+          protocol: UDP
         - containerPort: 80
           name: httpd-port
-          protocol: UDP
+          protocol: TCP
       restartPolicy: Always
       terminationGracePeriodSeconds: 0
 
@@ -53,15 +54,18 @@ spec:
     app: nettest-server
   type: NodePort
   ports:
-  - protocol: TCP
+  - name: iperf-port
+    protocol: TCP
     port: 5201
-    nodePort: 5201
+    nodePort: 30000
     targetPort: iperf-port
-  - protocol: UDP
+  - name: iperf-udp-port
+    protocol: UDP
     port: 5201
-    nodePort: 5201
+    nodePort: 30000
     targetPort: iperf-udp-port
-  - protocol: TCP
+  - name: httpd-port
+    protocol: TCP
     port: 80
-    nodePort: 80
+    nodePort: 30080
     targetPort: httpd-port

@@ -27,7 +27,7 @@
       replace:
         path: /tmp/nettest-client-deployment.yaml
         regexp: '%SERVER_IP%'
-        replace: "{{ cluster1_worker1_internal_ip }}"
+        replace: "{{ lookup('file', '/mnt/c/Users/Ali/PycharmProjects/dissertation/bash/serverip.txt') }}"
     - name: Save CNI env variable
       replace:
         path: /tmp/nettest-client-deployment.yaml
