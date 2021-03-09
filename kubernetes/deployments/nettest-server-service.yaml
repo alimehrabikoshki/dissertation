@@ -44,6 +44,7 @@ metadata:
 spec:
   selector:
     app: nettest-server
+  type: NodePort
   ports:
   - protocol: TCP
     port: 5201

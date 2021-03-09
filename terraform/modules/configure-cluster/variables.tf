@@ -53,3 +53,21 @@ variable "cni_playbook_path" {
   description = "relative path to CNI playbook(s) (FROM CONFIGURE-CLUSTER DIRECTORY)"
 }
 
+variable "initialise_nodes_playbook_path" {
+  type        = string
+  description = "absolute path to node init playbook"
+  default = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/k8s_nodes/all/initialise_k8s_node.yaml"
+}
+
+
+variable "initialise_master_playbook_path" {
+  type        = string
+  description = "absolute path to master init playbook"
+  default = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/k8s_nodes/masters/initialise_k8s_master.yaml"
+}
+
+variable "initialise_worker_playbook_path" {
+  type        = string
+  description = "absolute path to master init playbook"
+  default = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/k8s_nodes/workers/initialise_k8s_worker.yaml"
+}

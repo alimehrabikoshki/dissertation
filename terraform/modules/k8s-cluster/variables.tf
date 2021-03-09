@@ -1,13 +1,11 @@
 variable "gcp_region" {
   type        = string
   description = "GCP region"
-  default     = "europe-west2"
 }
 
 variable "gcp_project" {
   type        = string
   description = "GCP project name"
-  default     = "voltaic-reducer-304616"
 }
 
 variable "cluster_name" {
@@ -36,10 +34,10 @@ variable "machine_type" {
 
 
 
-variable "zone" {
-  type        = string
-  description = "zone of the instances and disk"
-}
+#variable "zone" {
+#  type        = string
+#  description = "zone of the instances and disk"
+#}
 
 variable "ssh_pubkey" {
   type        = string

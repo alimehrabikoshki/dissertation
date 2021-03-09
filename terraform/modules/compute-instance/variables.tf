@@ -1,19 +1,16 @@
 variable "gcp_region" {
   type        = string
   description = "GCP region"
-  default     = "europe-west2"
 }
 
 variable "gcp_project" {
   type        = string
   description = "GCP project name"
-  default     = "voltaic-reducer-304616"
 }
 
 variable "instance_name" {
   type        = string
   description = "Name of the compute instance"
-#  default     = "instance"
 }
 
 variable "machine_type" {

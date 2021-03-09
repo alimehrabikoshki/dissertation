@@ -1,8 +1,18 @@
-variable "gcp_region" { 
+variable "gcp_regionA" {
   type        = string 
-  description = "GCP region"
+  description = "GCP region A"
   default     = "europe-west2"
-} 
+}
+variable "gcp_regionB" {
+  type        = string
+  description = "GCP region B"
+  default     = "europe-west4"
+}
+variable "gcp_regionB-zone" {
+  type        = string
+  description = "GCP region B zone"
+  default     = "europe-west4-a"
+}
 
 variable "gcp_project" { 
   type        = string 
@@ -26,8 +36,13 @@ variable "storage-class" {
   description = "The storage class of GCS bucket to create" 
 } 
 
-variable "cidr_range" {
+variable "regionA-cidr_range" {
   type        = string
-  description = "The subnet CIDR range"
-  default     = "10.10.10.0/24"
+  description = "The regionA subnet CIDR range"
+  default     = "10.10.0.0/24"
+}
+variable "regionB-cidr_range" {
+  type        = string
+  description = "The regionB subnet CIDR range"
+  default     = "10.20.0.0/24"
 }
