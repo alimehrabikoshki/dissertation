@@ -26,7 +26,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: nettest-server
-        image: alimehrabikoshki/nettest-server:v3
+        image: alimehrabikoshki/nettest-server:v4
         imagePullPolicy: Always
         args: ['-s']
         ports:
