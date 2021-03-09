@@ -75,6 +75,7 @@ module "provision-cluster-networks" {
   regionB-cidr_range = var.regionB-cidr_range
 }
 module "provision-regionA-clusters" {
+  depends_on = [module.provision-cluster-networks]
   count = 2
   source = "../k8s-cluster"
 #  zone = data.google_compute_zones.available.names[count.index+1]
@@ -88,6 +89,7 @@ module "provision-regionA-clusters" {
 module "provision-regionB-cluster" {
   source = "../k8s-cluster"
   count = 1
+  depends_on = [module.provision-cluster-networks]
 
 #  zone = var.gcp_regionB-zone
   subnet_id = module.provision-cluster-networks.regionB-subnet_id

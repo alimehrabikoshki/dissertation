@@ -3,6 +3,7 @@ resource "google_compute_network" "network" {
   mtu           = var.mtu_value
   routing_mode =  var.routing_mode
   project       = var.gcp_project
+  auto_create_subnetworks = false
 
 }
 resource "google_compute_subnetwork" "subnet" {

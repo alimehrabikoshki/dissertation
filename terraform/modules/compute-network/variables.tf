@@ -12,13 +12,11 @@ variable "gcp_project" {
 variable "network_name" {
   type        = string
   description = "Name of the network"
-  default     = "k8s-testnet"
 }
 
 variable "subnet_name" {
   type        = string
   description = "The name of the subnet"
-  default     = "k8s-subnet"
 }
 
 variable "cidr_range" {
