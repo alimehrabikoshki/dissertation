@@ -9,12 +9,12 @@ Target the 3 different cluster masters and provision clients
 resource "null_resource" "save_intrazone_vars"{
   provisioner "local-exec" {
     command = <<EOT
-        cat <<\EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
-        {
-          "CNI": "${var.cni}",
-          "TESTCASE": "intrazone"
-        }
-        EOF
+cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
+{
+  "CNI": "${var.cni}",
+  "TESTCASE": "intrazone"
+}
+EOF
     EOT
   }
 }
@@ -36,12 +36,12 @@ module "intrazone-test" {
 resource "null_resource" "save_interzone_vars"{
   provisioner "local-exec" {
     command = <<EOT
-        cat <<\EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
-        {
-          "CNI": "${var.cni}",
-          "TESTCASE": "interzone"
-        }
-        EOF
+cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
+{
+  "CNI": "${var.cni}",
+  "TESTCASE": "interzone"
+}
+EOF
     EOT
   }
 }
@@ -62,12 +62,12 @@ module "interzone-test" {
 resource "null_resource" "save_interregion_vars"{
   provisioner "local-exec" {
     command = <<EOT
-        cat <<\EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
-        {
-          "CNI": "${var.cni}",
-          "TESTCASE": "interregion"
-        }
-        EOF
+cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
+{
+  "CNI": "${var.cni}",
+  "TESTCASE": "interregion"
+}
+EOF
     EOT
   }
 }

@@ -1,4 +1,4 @@
-  ---
+---
 - hosts: all
   remote_user: k8s
   become: yes
@@ -8,14 +8,15 @@
   connection: ssh
 
   tasks:
-    - name: Get nettest-server service IP
-      become_user: k8s
-      become_method: sudo
-      become: yes
-      shell: "kubectl describe svc/nettest-server | grep IP: | awk '{print $2;}'"
-      register: SERVER_IP
-    - debug:
-        msg: "{{ SERVER_IP.stdout }}"
+      #    - name: Get nettest-server service IP
+      #      become_user: k8s
+      #      become_method: sudo
+      #      become: yes
+      ##      shell: "kubectl describe svc/nettest-server | grep IP: | awk '{print $2;}'"
+      #      shell: "kubectl get service nettest-server | grep -v IP | awk '{print $3;}'"
+      #      register: SERVER_IP
+      #    - debug:
+      #        msg: "{{ SERVER_IP.stdout }}"
     - name: Copy nettest client deployment yaml
       become_user: root
       become_method: sudo

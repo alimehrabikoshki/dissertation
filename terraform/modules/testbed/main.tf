@@ -11,28 +11,28 @@ resource "null_resource" "save_ssh_key"{
 resource "null_resource" "save_ansible_vars"{
   provisioner "local-exec" {
     command = <<EOT
-        cat <<\EOF >> /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/cluster_ips.json
-        {
-          "cluster1_master_public_ip": "${local.cluster1_master_public_ip }",
-          "cluster1_worker1_public_ip":"${local.cluster1_worker1_public_ip}",
-          "cluster1_worker2_public_ip": "${local.cluster1_worker2_public_ip}",
-          "cluster1_master_internal_ip": "${local.cluster1_master_internal_ip }",
-          "cluster1_worker1_internal_ip": "${local.cluster1_worker1_internal_ip}",
-          "cluster1_worker2_internal_ip": "${local.cluster1_worker2_internal_ip}",
-          "cluster2_master_public_ip": "${local.cluster2_master_public_ip }",
-          "cluster2_worker1_public_ip": "${local.cluster2_worker1_public_ip}",
-          "cluster2_worker2_public_ip": "${local.cluster2_worker2_public_ip}",
-          "cluster2_master_internal_ip": "${local.cluster2_master_internal_ip }",
-          "cluster2_worker1_internal_ip": "${local.cluster2_worker1_internal_ip}",
-          "cluster2_worker2_internal_ip": "${local.cluster2_worker2_internal_ip}",
-          "cluster3_master_public_ip": "${local.cluster3_master_public_ip }",
-          "cluster3_worker1_public_ip": "${local.cluster3_worker1_public_ip}",
-          "cluster3_worker2_public_ip": "${local.cluster3_worker2_public_ip}",
-          "cluster3_master_internal_ip": "${local.cluster3_master_internal_ip }",
-          "cluster3_worker1_internal_ip": "${local.cluster3_worker1_internal_ip}",
-          "cluster3_worker2_internal_ip": "${local.cluster3_worker2_internal_ip}"
-        }
-        EOF
+cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/cluster_ips.json
+{
+  "cluster1_master_public_ip": "${local.cluster1_master_public_ip }",
+  "cluster1_worker1_public_ip":"${local.cluster1_worker1_public_ip}",
+  "cluster1_worker2_public_ip": "${local.cluster1_worker2_public_ip}",
+  "cluster1_master_internal_ip": "${local.cluster1_master_internal_ip }",
+  "cluster1_worker1_internal_ip": "${local.cluster1_worker1_internal_ip}",
+  "cluster1_worker2_internal_ip": "${local.cluster1_worker2_internal_ip}",
+  "cluster2_master_public_ip": "${local.cluster2_master_public_ip }",
+  "cluster2_worker1_public_ip": "${local.cluster2_worker1_public_ip}",
+  "cluster2_worker2_public_ip": "${local.cluster2_worker2_public_ip}",
+  "cluster2_master_internal_ip": "${local.cluster2_master_internal_ip }",
+  "cluster2_worker1_internal_ip": "${local.cluster2_worker1_internal_ip}",
+  "cluster2_worker2_internal_ip": "${local.cluster2_worker2_internal_ip}",
+  "cluster3_master_public_ip": "${local.cluster3_master_public_ip }",
+  "cluster3_worker1_public_ip": "${local.cluster3_worker1_public_ip}",
+  "cluster3_worker2_public_ip": "${local.cluster3_worker2_public_ip}",
+  "cluster3_master_internal_ip": "${local.cluster3_master_internal_ip }",
+  "cluster3_worker1_internal_ip": "${local.cluster3_worker1_internal_ip}",
+  "cluster3_worker2_internal_ip": "${local.cluster3_worker2_internal_ip}"
+}
+EOF
     EOT
   }
 }

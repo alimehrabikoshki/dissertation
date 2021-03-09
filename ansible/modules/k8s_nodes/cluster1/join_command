@@ -1,1 +1,1 @@
-kubeadm join 10.10.10.5:6443 --token pqibek.ngneel2hkvxuq3i7     --discovery-token-ca-cert-hash sha256:73610e2027c3ed4b6e451ef377ea0ce7fcb64e2adb02f3e7b66f0ef75d38084a 
+kubeadm join 10.10.0.4:6443 --token ari0i8.r9b62o52ul5u55ji     --discovery-token-ca-cert-hash sha256:e78d306fb3a5242096701138754bd1d9333adda9813f9c5361a8d0cc0be94479 
