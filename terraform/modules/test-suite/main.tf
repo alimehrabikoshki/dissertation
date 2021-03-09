@@ -2,6 +2,8 @@
     nodes = {"master ip" = var.cluster_master_ip, "worker1 ip" = var.cluster_worker1_ip, "worker2 ip" = var.cluster_worker2_ip}
     workers = {"worker1 ip" = var.cluster_worker1_ip, "worker2 ip" = var.cluster_worker2_ip}
 
+Target cluster1 master and provision server
+Target the 3 different cluster masters and provision clients
 }*/
 
 module "pod2pod-test" {

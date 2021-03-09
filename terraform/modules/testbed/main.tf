@@ -1,5 +1,3 @@
-
-
 resource "tls_private_key" "ssh_key" {
   algorithm   = "RSA"
   rsa_bits = "4096"
@@ -15,24 +13,24 @@ resource "null_resource" "save_ansible_vars"{
     command = <<EOT
         cat <<\EOF >> /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/cluster_ips.json
         {
-          "cluster1_master_external_ip": ${local.cluster1_master_external_ip },
-          "cluster1_worker1_external_ip": ${local.cluster1_worker1_external_ip},
-          "cluster1_worker2_external_ip": ${local.cluster1_worker2_external_ip},
-          "cluster1_master_internal_ip": ${local.cluster1_master_internal_ip },
-          "cluster1_worker1_internal_ip": ${local.cluster1_worker1_internal_ip},
-          "cluster1_worker2_internal_ip": ${local.cluster1_worker2_internal_ip},
-          "cluster2_master_external_ip": ${local.cluster2_master_external_ip },
-          "cluster2_worker1_external_ip": ${local.cluster2_worker1_external_ip},
-          "cluster2_worker2_external_ip": ${local.cluster2_worker2_external_ip},
-          "cluster2_master_internal_ip": ${local.cluster2_master_internal_ip },
-          "cluster2_worker1_internal_ip": ${local.cluster2_worker1_internal_ip},
-          "cluster2_worker2_internal_ip": ${local.cluster2_worker2_internal_ip},
-          "cluster3_master_external_ip": ${local.cluster3_master_external_ip },
-          "cluster3_worker1_external_ip": ${local.cluster3_worker1_external_ip},
-          "cluster3_worker2_external_ip": ${local.cluster3_worker2_external_ip},
-          "cluster3_master_internal_ip": ${local.cluster3_master_internal_ip },
-          "cluster3_worker1_internal_ip": ${local.cluster3_worker1_internal_ip},
-          "cluster3_worker2_internal_ip": ${local.cluster3_worker2_internal_ip}
+          "cluster1_master_external_ip": "${local.cluster1_master_external_ip }",
+          "cluster1_worker1_external_ip":"${local.cluster1_worker1_external_ip}",
+          "cluster1_worker2_external_ip": "${local.cluster1_worker2_external_ip}",
+          "cluster1_master_internal_ip": "${local.cluster1_master_internal_ip }",
+          "cluster1_worker1_internal_ip": "${local.cluster1_worker1_internal_ip}",
+          "cluster1_worker2_internal_ip": "${local.cluster1_worker2_internal_ip}",
+          "cluster2_master_external_ip": "${local.cluster2_master_external_ip }",
+          "cluster2_worker1_external_ip": "${local.cluster2_worker1_external_ip}",
+          "cluster2_worker2_external_ip": "${local.cluster2_worker2_external_ip}",
+          "cluster2_master_internal_ip": "${local.cluster2_master_internal_ip }",
+          "cluster2_worker1_internal_ip": "${local.cluster2_worker1_internal_ip}",
+          "cluster2_worker2_internal_ip": "${local.cluster2_worker2_internal_ip}",
+          "cluster3_master_external_ip": "${local.cluster3_master_external_ip }",
+          "cluster3_worker1_external_ip": "${local.cluster3_worker1_external_ip}",
+          "cluster3_worker2_external_ip": "${local.cluster3_worker2_external_ip}",
+          "cluster3_master_internal_ip": "${local.cluster3_master_internal_ip }",
+          "cluster3_worker1_internal_ip": "${local.cluster3_worker1_internal_ip}",
+          "cluster3_worker2_internal_ip": "${local.cluster3_worker2_internal_ip}"
         }
         EOF
     EOT
