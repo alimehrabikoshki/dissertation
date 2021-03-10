@@ -46,10 +46,6 @@ variable "cluster" {
   type = string
   description = "cluster number"
 }
-variable "k8s_ssh_private_key" {
-  type        = string
-  description = "k8s user private key"
-}
 
 variable "cni" {
   type = string

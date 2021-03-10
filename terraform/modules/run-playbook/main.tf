@@ -7,7 +7,7 @@ resource "null_resource" "run-playbook" {
             type = "ssh"
             user = "k8s"
             host = var.target_host
-            private_key = var.k8s_ssh_private_key
+            private_key = file("/mnt/c/Users/Ali/PycharmProjects/dissertation/terraform/auth/ssh-key/ssh-key.pem")
         }
     }
     #TODO: Change extra-vars input to a playbook-specific file and make that the new terraform variable input

@@ -1,25 +1,9 @@
-/*
-resource "null_resource" "save_intrazone_vars"{
-  provisioner "local-exec" {
-    command = <<EOT
-cat <<EOF > /mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/test_vars.json
-{
-  "CNI": "${var.cni}",
-  "TESTCASE": "intrazone"
-}
-EOF
-    EOT
-  }
-}
-*/
-
 module "deploy-nettest-server" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
 
     cluster_worker1_ip = var.cluster_worker1_ip
     cluster_worker2_ip = var.cluster_worker2_ip
-    k8s_ssh_private_key = var.k8s_ssh_private_key
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/k8s_nodes/masters/deploy_nettest_server.yaml"
     target_host = var.cluster1_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
@@ -46,7 +30,6 @@ module "intrazone-test" {
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
     cluster_worker2_ip = var.cluster_worker2_ip
-    k8s_ssh_private_key = var.k8s_ssh_private_key
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster1_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
@@ -73,7 +56,6 @@ module "interzone-test" {
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
     cluster_worker2_ip = var.cluster_worker2_ip
-    k8s_ssh_private_key = var.k8s_ssh_private_key
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster2_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
@@ -100,7 +82,6 @@ module "interregion-test" {
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
     cluster_worker2_ip = var.cluster_worker2_ip
-    k8s_ssh_private_key = var.k8s_ssh_private_key
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster3_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip

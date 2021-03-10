@@ -70,9 +70,9 @@ module "provision-cluster-networks" {
   gcp_project = var.gcp_project
   gcp_regionA = var.gcp_regionA
   gcp_regionB = var.gcp_regionB
-  gcp_regionB-zone = var.gcp_regionB-zone
-  regionA-cidr_range = var.regionA-cidr_range
-  regionB-cidr_range = var.regionB-cidr_range
+  gcp_regionB-zone = var.gcp_regionB_zone
+  regionA-cidr_range = var.regionA_cidr_range
+  regionB-cidr_range = var.regionB_cidr_range
 }
 module "provision-regionA-clusters" {
   depends_on = [module.provision-cluster-networks]
@@ -84,6 +84,7 @@ module "provision-regionA-clusters" {
   ssh_pubkey = tls_private_key.ssh_key.public_key_openssh
   gcp_project = var.gcp_project
   gcp_region = var.gcp_regionA
+  machine_type = var.machine_type
 }
 
 module "provision-regionB-cluster" {
@@ -96,55 +97,5 @@ module "provision-regionB-cluster" {
   ssh_pubkey = tls_private_key.ssh_key.public_key_openssh
   gcp_project = var.gcp_project
   gcp_region = var.gcp_regionB
-}
-
-module "configure-regionA-clusters" {
-  depends_on = [module.provision-regionA-clusters]
-  count = 2
-  source = "../configure-cluster"
-
-  cluster_master_ip = module.provision-regionA-clusters[count.index].master-node-public-ip
-  cluster_worker1_ip = module.provision-regionA-clusters[count.index].worker1-node-public-ip
-  cluster_worker2_ip = module.provision-regionA-clusters[count.index].worker2-node-public-ip
-  cluster_master_internal_ip = module.provision-regionA-clusters[count.index].master-node-ip
-  cluster_worker1_internal_ip = module.provision-regionA-clusters[count.index].worker1-node-ip
-  cluster_worker2_internal_ip = module.provision-regionA-clusters[count.index].worker2-node-ip
-  k8s_ssh_private_key = tls_private_key.ssh_key.private_key_pem
-  cni_playbook_path = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/CNIs/calico/calico_master.yaml"
-  cluster = "cluster${count.index+1}"
-}
-module "configure-regionB-cluster" {
-  depends_on = [module.provision-regionB-cluster]
-  count = 1
-  source = "../configure-cluster"
-
-  cluster_master_ip = module.provision-regionB-cluster[count.index].master-node-public-ip
-  cluster_worker1_ip = module.provision-regionB-cluster[count.index].worker1-node-public-ip
-  cluster_worker2_ip = module.provision-regionB-cluster[count.index].worker2-node-public-ip
-  cluster_master_internal_ip = module.provision-regionB-cluster[count.index].master-node-ip
-  cluster_worker1_internal_ip = module.provision-regionB-cluster[count.index].worker1-node-ip
-  cluster_worker2_internal_ip = module.provision-regionB-cluster[count.index].worker2-node-ip
-  k8s_ssh_private_key = tls_private_key.ssh_key.private_key_pem
-  cni_playbook_path = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/CNIs/calico/calico_master.yaml"
-  cluster = "cluster3"
-}
-
-
-module "test-suite" {
-  depends_on = [module.configure-regionA-clusters, module.configure-regionB-cluster]
-  source = "../test-suite"
-  count = 1
-
-  cluster = "cluster${count.index+1}"
-  cluster_master_ip = module.provision-regionA-clusters[count.index].master-node-public-ip
-  cluster_worker1_ip = module.provision-regionA-clusters[count.index].worker1-node-public-ip
-  cluster_worker2_ip = module.provision-regionA-clusters[count.index].worker2-node-public-ip
-  cluster_master_internal_ip = module.provision-regionA-clusters[count.index].master-node-ip
-  cluster_worker1_internal_ip = module.provision-regionA-clusters[count.index].worker1-node-ip
-  cluster_worker2_internal_ip = module.provision-regionA-clusters[count.index].worker2-node-ip
-  cluster1_master_public_ip = local.cluster1_master_public_ip
-  cluster2_master_public_ip = local.cluster2_master_public_ip
-  cluster3_master_public_ip = local.cluster3_master_public_ip
-  k8s_ssh_private_key = tls_private_key.ssh_key.private_key_pem
-  cni = var.cni
+  machine_type = var.machine_type
 }

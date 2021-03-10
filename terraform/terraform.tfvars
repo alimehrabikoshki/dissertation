@@ -1,0 +1,11 @@
+# GCP Settings
+gcp_project = "voltaic-reducer-304616"
+gcp_regionA  = "europe-west2"
+gcp_regionB  = "europe-west4"
+gcp_regionB_zone  = "europe-west4-a"
+gcp_auth_file = "/mnt/c/Users/Ali/PycharmProjects/dissertation/terraform/auth/service-key/service-key.json"
+cni           = "calico"
+#machine_type  = "n2-standard-16"
+machine_type  = "e2-standard-2"
+regionA_cidr_range = "10.10.0.0/24"
+regionB_cidr_range = "10.20.0.0/24"
