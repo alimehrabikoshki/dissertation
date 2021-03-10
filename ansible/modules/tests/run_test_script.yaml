@@ -59,12 +59,12 @@
       become_user: k8s
       become_method: sudo
       become: yes
-      shell: 'kubectl cp $POD:/nettest/ /tmp/nettest/'
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");kubectl cp $POD:/nettest/ /tmp/nettest/'
     - find: paths="/tmp/nettest" recurse=yes patterns="*.log"
       register: files_to_copy
     - name: Copy results from host to localhost
       fetch:
-        src: {{ item.path }}
+        src: "{{ item.path }}"
         dest: /mnt/c/Users/Ali/PycharmProjects/dissertation/results/
         flat: yes
       with_items: "{{ files_to_copy.files }}"
