@@ -1,0 +1,29 @@
+Connecting to host 10.10.0.5, port 30000
+[  6] local 10.100.0.129 port 55791 connected to 10.10.0.5 port 30000
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  6]   0.00-1.00   sec   148 MBytes  1241 Mbits/sec  108641  
+[  6]   1.00-2.00   sec   151 MBytes  1265 Mbits/sec  110737  
+[  6]   2.00-3.00   sec   147 MBytes  1237 Mbits/sec  108288  
+[  6]   3.00-4.00   sec   131 MBytes  1103 Mbits/sec  96512  
+[  6]   4.00-5.00   sec   135 MBytes  1129 Mbits/sec  98821  
+[  6]   5.00-6.00   sec   133 MBytes  1112 Mbits/sec  97321  
+[  6]   6.00-7.00   sec   138 MBytes  1157 Mbits/sec  101285  
+[  6]   7.00-8.00   sec   138 MBytes  1160 Mbits/sec  101532  
+[  6]   8.00-9.00   sec   138 MBytes  1159 Mbits/sec  101493  
+[  6]   9.00-10.00  sec   136 MBytes  1145 Mbits/sec  100184  
+[  6]  10.00-11.00  sec   137 MBytes  1147 Mbits/sec  100365  
+[  6]  11.00-12.00  sec   139 MBytes  1163 Mbits/sec  101813  
+[  6]  12.00-13.00  sec   136 MBytes  1139 Mbits/sec  99681  
+[  6]  13.00-14.00  sec   141 MBytes  1186 Mbits/sec  103787  
+[  6]  14.00-15.00  sec   147 MBytes  1232 Mbits/sec  107837  
+[  6]  15.00-16.00  sec   132 MBytes  1111 Mbits/sec  97209  
+[  6]  16.00-17.00  sec   137 MBytes  1152 Mbits/sec  100867  
+[  6]  17.00-18.00  sec   138 MBytes  1155 Mbits/sec  101113  
+[  6]  18.00-19.00  sec   138 MBytes  1155 Mbits/sec  101103  
+[  6]  19.00-20.00  sec   137 MBytes  1148 Mbits/sec  100527  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  6]   0.00-20.00  sec  2.71 GBytes  1165 Mbits/sec  0.000 ms  0/2039116 (0%)  sender
+[  6]   0.00-20.01  sec  2.52 GBytes  1080 Mbits/sec  0.007 ms  146817/2039082 (7.2%)  receiver
+
+iperf Done.
