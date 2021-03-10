@@ -25,7 +25,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: nettest-client
-        image:  alimehrabikoshki/nettest-client:v5
+        image:  alimehrabikoshki/nettest-client:v6
         imagePullPolicy: Always
         command: ["/bin/bash",  "-c"]
         args: ["tail -f /dev/null"]
