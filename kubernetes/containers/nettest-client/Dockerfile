@@ -1,7 +1,9 @@
 FROM ubuntu:latest
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y iperf3 wget flowgrind rrdtool curl apache2-utils rsync
+RUN apt-get update && \
+      apt-get -y install iperf3 wget curl apache2-utils rsync sed
+
 
 WORKDIR /nettest
-COPY run_test.sh /nettest/run_test.sh
-RUN chmod 777 /nettest/run_test.sh
+#COPY run_tests.sh /nettest/run_tests.sh

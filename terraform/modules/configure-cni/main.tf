@@ -1,3 +1,16 @@
+locals {
+  nodes = {
+    cluster1_master_public_ip = var.cluster1_master_public_ip
+    cluster1_worker1_public_ip = var.cluster1_worker1_public_ip
+    cluster1_worker2_public_ip = var.cluster1_worker2_public_ip
+    cluster2_master_public_ip = var.cluster2_master_public_ip
+    cluster2_worker1_public_ip = var.cluster2_worker1_public_ip
+    cluster2_worker2_public_ip = var.cluster2_worker2_public_ip
+    cluster3_master_public_ip = var.cluster3_master_public_ip
+    cluster3_worker1_public_ip = var.cluster3_worker1_public_ip
+    cluster3_worker2_public_ip = var.cluster3_worker2_public_ip
+  }
+}
 module "configure-regionA-cluster1" {
   source = "../configure-cluster"
 
@@ -55,4 +68,19 @@ module "test-suite" {
   cluster2_master_public_ip = var.cluster2_master_public_ip
   cluster3_master_public_ip = var.cluster3_master_public_ip
   cni = var.cni
+}
+
+module "reset-nodes" {
+    depends_on = [module.test-suite]
+    source = "../run-playbook"
+    for_each = local.nodes
+    target_host = each.value
+    playbook = var.reset_node_playbook_path
+    cluster_master_ip = var.cluster3_master_public_ip
+    cluster_worker1_ip = var.cluster3_worker1_public_ip
+    cluster_worker2_ip = var.cluster3_worker2_public_ip
+    cluster_master_internal_ip = var.cluster3_master_internal_ip
+    cluster_worker1_internal_ip = var.cluster3_worker1_internal_ip
+    cluster_worker2_internal_ip = var.cluster3_worker2_internal_ip
+    cluster = "cluster1"
 }

@@ -23,7 +23,6 @@ module "test-calico" {
   depends_on = [module.provision-testbed]
   source = "./modules/configure-cni"
 
-  for_each = local.cnis
   cni = "calico"
   cni_playbook_path = local.cnis.calico
   cluster1_master_internal_ip = module.provision-testbed.cluster1-master-ip
@@ -50,7 +49,6 @@ module "test-flannel" {
   depends_on = [module.test-calico]
   source = "./modules/configure-cni"
 
-  for_each = local.cnis
   cni = "flannel"
   cni_playbook_path = local.cnis.flannel
   cluster1_master_internal_ip = module.provision-testbed.cluster1-master-ip

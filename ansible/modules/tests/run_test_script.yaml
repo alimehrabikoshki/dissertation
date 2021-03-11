@@ -50,21 +50,31 @@
       become_user: k8s
       become_method: sudo
       shell: "kubectl wait --for=condition=Ready pods --selector app=nettest-client --timeout=60s"
+    - name: Copy bash folder from localhost to node
+      copy:
+        src: /mnt/c/Users/Ali/PycharmProjects/dissertation/bash
+        dest: /tmp/nettest/
+        directory_mode: 0777
+    - name: Copy bash folder from node to pod
+      become_user: k8s
+      become_method: sudo
+      become: yes
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");kubectl cp /tmp/nettest/bash $POD:/nettest/ '
     - name: Run test script
       become_user: k8s
       become_method: sudo
       become: yes
-      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c  /nettest/run_test.sh'
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c  /nettest/run_tests.sh'
     - name: Copy results from pod to host
       become_user: k8s
       become_method: sudo
       become: yes
-      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");kubectl cp $POD:/nettest/ /tmp/nettest/'
+      shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");kubectl cp $POD:/nettest/bash /tmp/nettest/'
     - find: paths="/tmp/nettest" recurse=yes patterns="*.log"
       register: files_to_copy
     - name: Copy results from host to localhost
       fetch:
-        src: "{{ item.path }}"
+        src: /tmp/nettest/bash/results
         dest: /mnt/c/Users/Ali/PycharmProjects/dissertation/results/
         flat: yes
       with_items: "{{ files_to_copy.files }}"
