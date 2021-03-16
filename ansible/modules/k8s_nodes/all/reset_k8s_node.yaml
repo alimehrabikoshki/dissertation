@@ -19,6 +19,7 @@
             sudo rm -rf /etc/cni/
             sudo rm -rf /var/lib/etcd/
             sudo rm -rf /var/etcd/
+            sudo rm -rf /home/k8s/.kube/
             sudo iptables -F
             modprobe -r ipip
 

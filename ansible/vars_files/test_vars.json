@@ -1,5 +1,5 @@
 
 {
-  CNI: flannel,
-  TESTCASE: intrazone
+  CNI: calico_vxlan,
+  TESTCASE: interregion
 } 

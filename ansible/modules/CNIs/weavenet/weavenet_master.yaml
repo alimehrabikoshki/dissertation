@@ -1,0 +1,43 @@
+---
+- hosts: all
+  remote_user: k8s
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+   - name: Copy cni YAML to node
+     copy:
+       src: /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/cnis/weavenet.yaml
+       dest: /tmp/weavenet.yaml
+   - name: Initialise weavenet network
+     become_user: k8s
+     become_method: sudo
+     become: yes
+     command: "{{ item }}"
+     with_items:
+       - /usr/bin/kubectl apply -f /tmp/weavenet.yaml
+   - name: Save cluster join command
+     shell: kubeadm token create  --print-join-command
+     register: join_command
+   - debug:
+       msg: "{{ join_command.stdout }}"
+
+   - name: Save output to file
+     become: false
+     local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="../../k8s_nodes/{{ cluster }}/join_command" mode=0777
+
+   - name: Configure kubectl command auto-completion.
+     lineinfile:
+       dest: /home/{{ ansible_ssh_user }}/.bashrc
+       line: 'source <(kubectl completion bash)'
+       insertafter: EOF
+
+   - name: Wait for master pods to initialise
+     become: yes
+     become_user: k8s
+     become_method: sudo
+     shell: "kubectl wait --namespace=kube-system --for=condition=Ready pods --selector tier=control-plane --timeout=120s"
+

@@ -124,8 +124,8 @@
 
     - name: Reboot
       reboot:
-        post_reboot_delay: 15
-        connect_timeout: 120
-        reboot_timeout: 120
+        post_reboot_delay: 20
+        connect_timeout: 240
+        reboot_timeout: 240
         test_command: uptime
 ...
