@@ -1,6 +1,6 @@
 for testcase in ["intrazone" "interzone" "interregion"]
 do
-  for test in ["5M_400" "1M_200"]
+  for test in ["5M_800" "1M_200"]
   do
     cat <<EOF > ../results/tsv/${testcase}/apache_${test}_percentile_stats.tsv
     Percentile

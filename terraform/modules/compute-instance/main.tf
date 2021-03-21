@@ -21,6 +21,7 @@ resource "google_compute_instance" "instance" {
   network_interface {
     subnetwork = var.subnet_id
     network_ip = var.internal_ip
+    nic_type = "GVNIC"
     access_config {}
   }
 

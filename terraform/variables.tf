@@ -34,11 +34,13 @@ variable "regionB_cidr_range" {
   description = "The regionB subnet CIDR range"
 #  default     = "10.20.0.0/24"
 }
+/*
 variable "cni" {
   type        = string
   description = "The CNI being tested"
  # default     = "calico"
 }
+*/
 variable "machine_type" {
   type        = string
   description = "Machine type of compute instances"

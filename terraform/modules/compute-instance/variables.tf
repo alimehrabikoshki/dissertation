@@ -33,7 +33,8 @@ variable "subnet_id" {
 variable "preemptible" {
   type        = string
   description = "Select whether or not to provision reduced cost preemptible vm's"
-  default = true #Change to false when doing final tests
+#  default = true #Change to false when doing final tests
+  default = false
 }
 //variable "external_disk" {
 //  type        = string

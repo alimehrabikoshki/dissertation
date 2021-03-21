@@ -6,4 +6,3 @@ RUN apt-get update && \
 
 
 WORKDIR /nettest
-#COPY run_tests.sh /nettest/run_tests.sh

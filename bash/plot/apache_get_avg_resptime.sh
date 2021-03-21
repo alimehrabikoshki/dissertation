@@ -1,7 +1,7 @@
 echo "cni    Avg Response Time" > ../results/tsv/*/apache_avg_resptime_stats.tsv
 for testcase in ["intrazone" "interzone" "interregion"]
 do
-  for test in ["5M_400" "1M_200"]
+  for test in ["5M_800" "1M_200"]
   do
     for n in ../results/raw/${testcase}/*{test}_stdout.log
     do

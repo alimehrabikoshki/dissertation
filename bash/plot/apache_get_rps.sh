@@ -1,7 +1,7 @@
 echo "cni    Requests per second" > ../results/tsv/*/apache_rps_stats.tsv
 for testcase in ["intrazone" "interzone" "interregion"]
 do
-  for test in ["5M_400" "1M_200"]
+  for test in ["5M_800" "1M_200"]
   do
     for n in ../results/raw/${testcase}/*{test}_stdout.log
     do
