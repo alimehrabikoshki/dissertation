@@ -22,9 +22,12 @@ variable "machine_type" {
 variable "instance_image" {
   type        = string
   description = "Instance OS image to boot from"
-  default     = "ubuntu-2010-groovy-v20210211a"
+#  default     = "ubuntu-2010-groovy-v20210211a"
 }
-
+variable "min_cpu_platform" {
+  type        = string
+  default     = ""
+}
 variable "subnet_id" {
   type        = string
   description = "ID of the subnet to attach to"

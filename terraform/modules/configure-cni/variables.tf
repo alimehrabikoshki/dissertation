@@ -45,12 +45,7 @@ variable "cluster2_worker1_public_ip" {
 variable "cluster2_worker1_internal_ip" {
   type        = string
 }
-variable "cluster2_worker2_public_ip" {
-  type        = string
-}
-variable "cluster2_worker2_internal_ip" {
-  type        = string
-}
+
 variable "cluster3_master_public_ip" {
   type        = string
 }
@@ -62,11 +57,5 @@ variable "cluster3_worker1_public_ip" {
   type        = string
 }
 variable "cluster3_worker1_internal_ip" {
-  type        = string
-}
-variable "cluster3_worker2_public_ip" {
-  type        = string
-}
-variable "cluster3_worker2_internal_ip" {
   type        = string
 }

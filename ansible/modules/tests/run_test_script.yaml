@@ -65,7 +65,7 @@
       become_method: sudo
       become: yes
       shell: 'POD=$(/usr/bin/kubectl get pod -l app=nettest-client -o jsonpath="{.items[0].metadata.name}");/usr/bin/kubectl exec  $POD -- /bin/bash -c "chmod 777 -R /nettest/; /nettest/bash/test-scripts/run_tests.sh"'
-      ignore_errors: yes
+    #  ignore_errors: yes
     - name: Copy results from pod to host
       become_user: k8s
       become_method: sudo

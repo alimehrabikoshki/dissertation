@@ -5,10 +5,8 @@ locals {
     cluster1_worker2_public_ip = var.cluster1_worker2_public_ip
     cluster2_master_public_ip = var.cluster2_master_public_ip
     cluster2_worker1_public_ip = var.cluster2_worker1_public_ip
-    cluster2_worker2_public_ip = var.cluster2_worker2_public_ip
     cluster3_master_public_ip = var.cluster3_master_public_ip
     cluster3_worker1_public_ip = var.cluster3_worker1_public_ip
-    cluster3_worker2_public_ip = var.cluster3_worker2_public_ip
   }
 }
 module "configure-regionA-cluster1" {
@@ -25,27 +23,23 @@ module "configure-regionA-cluster1" {
 }
 
 module "configure-regionA-cluster2" {
-  source = "../configure-cluster"
+  source = "../configure-auxcluster"
 
   cluster_master_ip = var.cluster2_master_public_ip
   cluster_worker1_ip = var.cluster2_worker1_public_ip
-  cluster_worker2_ip = var.cluster2_worker2_public_ip
   cluster_master_internal_ip = var.cluster2_master_internal_ip
   cluster_worker1_internal_ip = var.cluster2_worker1_internal_ip
-  cluster_worker2_internal_ip = var.cluster2_worker2_internal_ip
   cni_playbook_path = var.cni_playbook_path
   cluster = "cluster2"
 }
 module "configure-regionB-cluster" {
   count = 1
-  source = "../configure-cluster"
+  source = "../configure-auxcluster"
 
   cluster_master_ip = var.cluster3_master_public_ip
   cluster_worker1_ip = var.cluster3_worker1_public_ip
-  cluster_worker2_ip = var.cluster3_worker2_public_ip
   cluster_master_internal_ip = var.cluster3_master_internal_ip
   cluster_worker1_internal_ip = var.cluster3_worker1_internal_ip
-  cluster_worker2_internal_ip = var.cluster3_worker2_internal_ip
   cni_playbook_path = var.cni_playbook_path
   cluster = "cluster3"
 }
@@ -78,9 +72,7 @@ module "reset-nodes" {
     playbook = var.reset_node_playbook_path
     cluster_master_ip = var.cluster3_master_public_ip
     cluster_worker1_ip = var.cluster3_worker1_public_ip
-    cluster_worker2_ip = var.cluster3_worker2_public_ip
     cluster_master_internal_ip = var.cluster3_master_internal_ip
     cluster_worker1_internal_ip = var.cluster3_worker1_internal_ip
-    cluster_worker2_internal_ip = var.cluster3_worker2_internal_ip
     cluster = "cluster1"
 }

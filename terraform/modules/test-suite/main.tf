@@ -1,14 +1,11 @@
 module "deploy-nettest-server" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
-
     cluster_worker1_ip = var.cluster_worker1_ip
-    cluster_worker2_ip = var.cluster_worker2_ip
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/k8s_nodes/masters/deploy_nettest_server.yaml"
     target_host = var.cluster1_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
     cluster_worker1_internal_ip = var.cluster_worker1_internal_ip
-    cluster_worker2_internal_ip = var.cluster_worker2_internal_ip
     cluster = var.cluster
 }
 
@@ -29,12 +26,10 @@ module "intrazone-test" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
-    cluster_worker2_ip = var.cluster_worker2_ip
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster1_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
     cluster_worker1_internal_ip = var.cluster_worker1_internal_ip
-    cluster_worker2_internal_ip = var.cluster_worker2_internal_ip
     cluster = var.cluster
 }
 
@@ -55,12 +50,10 @@ module "interzone-test" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
-    cluster_worker2_ip = var.cluster_worker2_ip
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster2_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
     cluster_worker1_internal_ip = var.cluster_worker1_internal_ip
-    cluster_worker2_internal_ip = var.cluster_worker2_internal_ip
     cluster = var.cluster
 }
 resource "null_resource" "save_interregion_vars"{
@@ -81,12 +74,10 @@ module "interregion-test" {
     source = "../run-playbook"
     cluster_master_ip = var.cluster_master_ip
     cluster_worker1_ip = var.cluster_worker1_ip
-    cluster_worker2_ip = var.cluster_worker2_ip
     playbook = "/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/modules/tests/run_test_script.yaml"
     target_host = var.cluster3_master_public_ip
     cluster_master_internal_ip = var.cluster_master_internal_ip
     cluster_worker1_internal_ip = var.cluster_worker1_internal_ip
-    cluster_worker2_internal_ip = var.cluster_worker2_internal_ip
     cluster = var.cluster
 }
 /*

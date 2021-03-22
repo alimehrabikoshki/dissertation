@@ -10,6 +10,7 @@ resource "google_compute_instance" "instance" {
   machine_type  = var.machine_type #"e2-standard-2"
   zone = var.instance_zone
   can_ip_forward = true
+  min_cpu_platform = var.min_cpu_platform
   boot_disk {
     device_name = "${var.instance_name}-boot_disk"
     auto_delete = true

@@ -40,14 +40,10 @@ module "test-calico" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 
 module "test-flannel" {
@@ -66,14 +62,10 @@ module "test-flannel" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 
 module "test-kuberouter" {
@@ -92,14 +84,10 @@ module "test-kuberouter" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 module "test-cilium" {
   depends_on = [module.test-kuberouter]
@@ -117,14 +105,10 @@ module "test-cilium" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 
 module "test-canal" {
@@ -143,14 +127,10 @@ module "test-canal" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 
 module "test-weavenet" {
@@ -169,14 +149,10 @@ module "test-weavenet" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }
 
 module "test-calico_vxlan" {
@@ -195,12 +171,8 @@ module "test-calico_vxlan" {
   cluster2_master_public_ip = module.provision-testbed.cluster2-master-public-ip
   cluster2_worker1_internal_ip = module.provision-testbed.cluster2-worker1-ip
   cluster2_worker1_public_ip = module.provision-testbed.cluster2-worker1-public-ip
-  cluster2_worker2_internal_ip = module.provision-testbed.cluster2-worker2-ip
-  cluster2_worker2_public_ip =  module.provision-testbed.cluster2-worker2-public-ip
   cluster3_master_internal_ip = module.provision-testbed.cluster3-master-ip
   cluster3_master_public_ip = module.provision-testbed.cluster3-master-public-ip
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
-  cluster3_worker2_internal_ip = module.provision-testbed.cluster3-worker2-ip
-  cluster3_worker2_public_ip =  module.provision-testbed.cluster3-worker2-public-ip
 }

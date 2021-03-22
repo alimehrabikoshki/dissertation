@@ -1,6 +1,6 @@
 locals {
-    nodes = {"master ip" = var.cluster_master_ip, "worker1 ip" = var.cluster_worker1_ip, "worker2 ip" = var.cluster_worker2_ip}
-    workers = {"worker1 ip" = var.cluster_worker1_ip, "worker2 ip" = var.cluster_worker2_ip}
+    nodes = {"master ip" = var.cluster_master_ip, "worker1 ip" = var.cluster_worker1_ip}
+    workers = {"worker1 ip" = var.cluster_worker1_ip}
 
 }
 
