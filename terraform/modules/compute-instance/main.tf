@@ -27,10 +27,10 @@ resource "google_compute_instance" "instance" {
   }
 
 
-  scheduling {
-    preemptible = var.preemptible
-    automatic_restart = false
-  }
+  #scheduling {
+   # preemptible = var.preemptible
+  #  automatic_restart = false
+ # }
   metadata = {
     ssh-keys = "${var.ssh_user}:${var.ssh_pubkey}"
   }

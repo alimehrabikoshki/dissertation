@@ -44,7 +44,7 @@
       become: yes
       become_user: k8s
       become_method: sudo
-      shell: "kubectl wait --for=condition=Ready pods --selector app=nettest-server --timeout=80s"
+      shell: "kubectl wait --for=condition=Ready pods --selector app=nettest-server --timeout=600s"
     - name: Save nettest-server service IP
       become_user: k8s
       become_method: sudo
