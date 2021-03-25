@@ -1,0 +1,14 @@
+mv ../../results/results/raw/interregion/calico-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/calico-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/calico-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/calico-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/calico_vxlan-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/calico_vxlan-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/calico_vxlan-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/calico_vxlan-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/canal-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/canal-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/canal-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/canal-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/cilium-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/cilium-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/cilium-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/cilium-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/flannel-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/flannel-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/flannel-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/flannel-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/kuberouter-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/kuberouter-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/kuberouter-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/kuberouter-interregion-apachebench_200K_500_stdout.log
+mv ../../results/results/raw/interregion/weavenet-interregion-apachebench_800K_400.log ../../results/results/raw/interregion/weavenet-interregion-apachebench_200K_500.log
+mv ../../results/results/raw/interregion/weavenet-interregion-apachebench_800K_400_stdout.log ../../results/results/raw/interregion/weavenet-interregion-apachebench_200K_500_stdout.log

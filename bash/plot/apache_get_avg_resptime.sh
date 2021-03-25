@@ -1,11 +1,18 @@
-echo "cni    Avg Response Time" > ../results/tsv/*/apache_avg_resptime_stats.tsv
-for testcase in ["intrazone" "interzone" "interregion"]
+for testcase in "intrazone" "interzone" "interregion"
 do
-  for test in ["2M_400" "1M_200"]
+  for test in "100K_250" "200K_500"
   do
-    for n in ../results/raw/${testcase}/*{test}_stdout.log
+    echo "cni    Avg Response Time" > ../../results/results/tsv/${testcase}/apache_${test}_avg_resptime_stats.tsv
+  done
+done
+
+for testcase in "intrazone" "interzone" "interregion"
+do
+  for test in "100K_250" "200K_500"
+  do
+    for n in ../../results/results/raw/${testcase}/*${test}_stdout.log
     do
-       echo "$(echo ${n} |  cut -d '-' -f1)    $(grep -v "across all concurrent requests" ${n}| grep "Time per request:" |  sed 's/[#\/sec] (mean)//g' |  sed 's/Time per request://g')" >> ../results/tsv/*/apache_avg_resptime_stats.tsv
+       echo "$(echo ${n} |  cut -d '-' -f1 | sed 's:.*/::')    $(grep -v "across all concurrent requests" ${n}| grep "Time per request:" |  sed 's/[#\/sec] (mean)//g' |  sed 's/Time per request://g')" >> ../../results/results/tsv/${testcase}/apache_${test}_avg_resptime_stats.tsv
     done
   done
 done
