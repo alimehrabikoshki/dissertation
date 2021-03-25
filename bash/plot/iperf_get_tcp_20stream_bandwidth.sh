@@ -1,6 +1,7 @@
 for testcase in "intrazone" "interzone" "interregion"
 do
   cat <<EOF > ../../results/results/tsv/${testcase}/iperf_tcp_20stream_bandwidth_stats.tsv
+
 0
 1
 2
@@ -69,8 +70,8 @@ do
   for n in ../../results/results/raw/${testcase}/*iperf_tcp_20stream.log
   do
      CNI_RESULT=$(echo ${n} |  cut -d '-' -f1 | sed 's:.*/::')
-     grep "[SUM]"  ${n} | grep -v "receiver" | grep -v "sender" | awk '{print $7}' > ${n}.tcp_20stream
-     sed -i "1i${CNI_RESULT}" ${n}.tcp_20stream
-     paste ../../results/results/tsv/${testcase}/iperf_tcp_20stream_bandwidth_stats.tsv ${n}.tcp_20stream > tmpfile && mv tmpfile ../../results/results/tsv/${testcase}/iperf_tcp_20stream_bandwidth_stats.tsv
+     grep 'SUM'  ${n} | grep -v "receiver" | grep -v "sender" | awk '{print $6}' > ../../results/results/tsv/${testcase}/${CNI_RESULT}.tcp_20stream_bandwidth
+     sed -i "1i${CNI_RESULT}" ../../results/results/tsv/${testcase}/${CNI_RESULT}.tcp_20stream_bandwidth
+     paste ../../results/results/tsv/${testcase}/iperf_tcp_20stream_bandwidth_stats.tsv ../../results/results/tsv/${testcase}/${CNI_RESULT}.tcp_20stream_bandwidth > tmpfile && mv tmpfile ../../results/results/tsv/${testcase}/iperf_tcp_20stream_bandwidth_stats.tsv
   done
 done

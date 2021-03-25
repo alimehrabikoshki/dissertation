@@ -3,7 +3,7 @@ do
   for test in "100K_250" "200K_500"
   do
     cat <<EOF > ../../results/results/tsv/${testcase}/apache_${test}_percentile_stats.tsv
-Percentile
+
 50%
 66%
 75%

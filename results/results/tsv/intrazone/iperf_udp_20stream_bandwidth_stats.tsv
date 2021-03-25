@@ -1,4 +1,5 @@
-0	calico	calico_vxlan	canal	cilium	flannel	kuberouter	weavenet
+	calico	calico_vxlan	canal	cilium	flannel	kuberouter	weavenet
+0	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 1	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 2	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 3	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
@@ -18,8 +19,8 @@
 17	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 18	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 19	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
-20	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
-21	108102	191634	160655	190197	123248	106511	205687
+20	108102	191634	160655	190197	123248	106511	205687
+21	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 22	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 23	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 24	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
@@ -39,8 +40,8 @@
 38	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 39	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 40	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
-41	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
-42	99980	140940	140660	180962	188963	105407	195839
+41	99980	140940	140660	180962	188963	105407	195839
+42	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 43	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 44	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 45	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
@@ -58,7 +59,6 @@
 57	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 58	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 59	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
-	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec	Mbits/sec
 	109171	143900	140260	193522	188231	102840	166187

@@ -1,6 +1,7 @@
 for testcase in "intrazone" "interzone" "interregion"
 do
   cat <<EOF > ../../results/results/tsv/${testcase}/iperf_udp_1stream_pps_stats.tsv
+
 0
 1
 2
@@ -70,8 +71,8 @@ do
   do
      CNI_RESULT=$(echo ${n} |  cut -d '-' -f1 | sed 's:.*/::')
 #     grep "Mbits/sec"  ${n} | grep -v "sender|receiver" | xargs -I {} sh -c "echo {} | awk 'print{$2}' | cut -d '-' -f1 " | sed 's/(longest request)//g' > ../../results/results/tsv/${testcase}/${CNI_RESULT}.percentiles
-     grep "Mbits/sec"  ${n} | grep -v "receiver" | grep -v "sender" |awk '{print $8}' > ../../results/results/tsv/${testcase}/${CNI_RESULT}
-     sed -i "1i${CNI_RESULT}" ../../results/results/tsv/${testcase}/${CNI_RESULT}
-     paste ../../results/results/tsv/${testcase}/iperf_udp_1stream_pps_stats.tsv ../../results/results/tsv/${testcase}/${CNI_RESULT} > tmpfile && mv tmpfile ../../results/results/tsv/${testcase}/iperf_udp_1stream_pps_stats.tsv
+     grep "Mbits"  ${n} | grep -v "receiver" | grep -v "sender" |awk '{print $7}' > ../../results/results/tsv/${testcase}/${CNI_RESULT}_udp_1stream_pps
+     sed -i "1i${CNI_RESULT}" ../../results/results/tsv/${testcase}/${CNI_RESULT}_udp_1stream_pps
+     paste ../../results/results/tsv/${testcase}/iperf_udp_1stream_pps_stats.tsv ../../results/results/tsv/${testcase}/${CNI_RESULT}_udp_1stream_pps > tmpfile && mv tmpfile ../../results/results/tsv/${testcase}/iperf_udp_1stream_pps_stats.tsv
   done
 done
