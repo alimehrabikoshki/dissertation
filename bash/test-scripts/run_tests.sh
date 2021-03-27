@@ -11,5 +11,5 @@ export RAW_RESULT_PATH="/nettest/bash/results/raw/${TESTCASE}/"
 #udp 20 stream test
 /nettest/bash/test-scripts/iperf_udp_20stream.sh && \
 #Run ApacheBench against the nginx service installed on the nettest server with 200 and 800 streams
-/nettest/bash/test-scripts/apachebench_1M_200.sh && \
-/nettest/bash/test-scripts/apachebench_2M_400.sh
+/nettest/bash/test-scripts/apachebench_100K_250.sh && \
+/nettest/bash/test-scripts/apachebench_200K_500.sh

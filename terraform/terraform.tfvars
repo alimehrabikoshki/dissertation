@@ -1,5 +1,5 @@
 # GCP Settings
-gcp_project = "voltaic-reducer-304616"
+gcp_project = "silver-theme-308916"
 gcp_regionA  = "europe-west2"
 gcp_regionB  = "europe-west4"
 gcp_regionB_zone  = "europe-west4-a"

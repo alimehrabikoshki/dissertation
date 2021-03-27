@@ -187,12 +187,12 @@ cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
 EOT
   }
 }
-resource "null_resource" "plot_results"{
-  depends_on = [null_resource.parse_results]
-  provisioner "local-exec" {
-    command = <<EOT
-cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
-gnuplot
-EOT
-  }
-}
+//resource "null_resource" "plot_results"{
+//  depends_on = [null_resource.parse_results]
+//  provisioner "local-exec" {
+//    command = <<EOT
+//cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
+//gnuplot
+//EOT
+//  }
+//}

@@ -2,41 +2,43 @@ This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking 10.10.0.6 (be patient)
+Benchmarking 10.10.0.5 (be patient)
 
 
 Server Software:        nginx/1.18.0
-Server Hostname:        10.10.0.6
+Server Hostname:        10.10.0.5
 Server Port:            30080
 
 Document Path:          /
 Document Length:        612 bytes
 
 Concurrency Level:      250
-Time taken for tests:   8.167 seconds
+Time taken for tests:   8.423 seconds
 Complete requests:      100000
 Failed requests:        0
 Total transferred:      85400000 bytes
 HTML transferred:       61200000 bytes
-Requests per second:    12244.27 [#/sec] (mean)
-Time per request:       20.418 [ms] (mean)
-Time per request:       0.082 [ms] (mean, across all concurrent requests)
-Transfer rate:          10211.53 [Kbytes/sec] received
+Requests per second:    11872.93 [#/sec] (mean)
+Time per request:       21.056 [ms] (mean)
+Time per request:       0.084 [ms] (mean, across all concurrent requests)
+Transfer rate:          9901.83 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        9   10   3.2     10    1021
-Processing:     9   10   0.5     10      22
-Waiting:        9   10   0.5     10      20
-Total:         18   20   3.3     20    1031
+Connect:        9   10   0.6     10      18
+Processing:     9   11   0.7     11      19
+Waiting:        9   11   0.6     10      17
+Total:         18   21   1.2     21      30
+WARNING: The median and mean for the waiting time are not within a normal deviation
+        These results are probably not that reliable.
 
 Percentage of the requests served within a certain time (ms)
-  50%     20
-  66%     21
-  75%     21
-  80%     21
-  90%     21
-  95%     21
-  98%     22
-  99%     23
- 100%   1031 (longest request)
+  50%     21
+  66%     22
+  75%     22
+  80%     22
+  90%     22
+  95%     23
+  98%     23
+  99%     24
+ 100%     30 (longest request)

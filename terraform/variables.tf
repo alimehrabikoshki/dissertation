@@ -17,7 +17,7 @@ variable "gcp_regionB_zone" {
 variable "gcp_project" { 
   type        = string 
   description = "GCP project name"
-  default     = "voltaic-reducer-304616"
+  default     = "silver-theme-308916"
 } 
 
 variable "gcp_auth_file" { 

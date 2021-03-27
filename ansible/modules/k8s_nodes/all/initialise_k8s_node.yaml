@@ -46,6 +46,7 @@
           net.ipv4.tcp_rmem=4096 87380 8388608
           net.ipv4.tcp_wmem=4096 16384 8388608
           net.netfilter.nf_conntrack_tcp_be_liberal=1
+          net.ipv4.tcp_syncookies=0
           net.ipv4.route.flush=1
           EOF
 
