@@ -12,4 +12,8 @@
 ./iperf_get_udp_20stream_packetloss.sh  &&  \
 ./iperf_get_tcp_1stream_retransmissions.sh &&  \
 ./iperf_get_udp_1stream_packetloss.sh && \
+./iperf_get_tcp_1stream_avg_bandwidth.sh &&  \
+./iperf_get_udp_1stream_avg_pps.sh && \
+./iperf_get_tcp_20stream_avg_bandwidth.sh &&  \
+./iperf_get_udp_20stream_avg_pps.sh && \
 ./iperf_get_udp_20stream_pps.sh
