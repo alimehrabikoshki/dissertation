@@ -176,3 +176,23 @@ module "test-calico_vxlan" {
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
+
+
+resource "null_resource" "parse_results" {
+  depends_on = [module.test-calico_vxlan]
+  provisioner "local-exec" {
+    command = <<EOT
+cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
+./parse_results.sh;
+EOT
+  }
+}
+resource "null_resource" "plot_results"{
+  depends_on = [null_resource.parse_results]
+  provisioner "local-exec" {
+    command = <<EOT
+cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
+gnuplot
+EOT
+  }
+}

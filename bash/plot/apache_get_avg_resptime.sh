@@ -12,7 +12,7 @@ do
   do
     for n in ../../results/results/raw/${testcase}/*${test}_stdout.log
     do
-       echo "$(echo ${n} |  cut -d '-' -f1 | sed 's:.*/::')    $(grep -v "across all concurrent requests" ${n}| grep "Time per request:" |  sed 's/[#\/sec] (mean)//g' |  sed 's/Time per request://g')" >> ../../results/results/tsv/${testcase}/apache_${test}_avg_resptime_stats.tsv
+       echo "$(echo ${n} |  cut -d '-' -f1 | sed 's:.*/::')    $(grep -v "across all concurrent requests" ${n}| grep "Time per request:" |  sed 's/\[#\/sec\] (mean)//g' |  sed 's/Time per request://g' | awk -F " " '{print $1}')" >> ../../results/results/tsv/${testcase}/apache_${test}_avg_resptime_stats.tsv
     done
   done
 done
