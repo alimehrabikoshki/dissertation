@@ -182,8 +182,18 @@ resource "null_resource" "parse_results" {
   depends_on = [module.test-calico_vxlan]
   provisioner "local-exec" {
     command = <<EOT
-cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
+cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/parse_results;
 ./parse_results.sh;
+EOT
+  }
+}
+
+resource "null_resource" "plot_results" {
+  depends_on = [null_resource.parse_results]
+  provisioner "local-exec" {
+    command = <<EOT
+cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
+./plot_results.sh;
 EOT
   }
 }

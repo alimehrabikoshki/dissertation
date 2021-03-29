@@ -1,6 +1,8 @@
 set terminal pngcairo size 1280, 800
-set output "iperf_tcp_1stream_throughput.png"
-set title "iPerf3 TCP Throughput - 1 session - Intrazone"
+outputular=sprintf("iperf_tcp_1stream_%s_throughput.png", ARG1)
+set output outputular
+titular=sprintf("iPerf3 TCP Throughput - 1 session - %s", ARG1)
+set title titular
 set size 1,0.6
 set grid y
 set xlabel "Time (s)"
@@ -9,7 +11,7 @@ set ylabel "Throughput (Mbit/s)"
 set rmargin 20
 set key right top
 set key outside maxcols 1 maxrows 7
-filename="../../results/results/tsv/intrazone/iperf_tcp_1stream_bandwidth_stats.tsv"
+filename=sprintf("../../results/results/tsv/%s/iperf_tcp_1stream_bandwidth_stats.tsv", ARG1)
 header = system("head -n 1 ".filename)
 label1 = word(header,1)
 label2 = word(header,2)
