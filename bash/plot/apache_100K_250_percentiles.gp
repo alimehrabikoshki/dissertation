@@ -1,19 +1,19 @@
 set terminal pngcairo size 1280, 800
-outputular=sprintf("iperf_tcp_1stream_%s_retransmissions.png", ARG1)
+outputular=sprintf("apache_100K_250_%s_percentiles.png", ARG1)
 path=sprintf("../../results/results/png/%s/", ARG1)
 outputular=sprintf("%s%s", path, outputular)
 set output outputular
-titular=sprintf("iPerf3 TCP Retransmissions - 1 session - %s", ARG1)
+titular=sprintf("ApacheBench HTTP Response time percentiles - 100K Requests-  200 session - %s", ARG1)
 set title titular
-set size 1,0.6
+set size 1,0.8
 set grid y
 set xlabel "Time (s)"
-set ylabel "Retransmissions (Packets)"
-
+set ylabel "Response time (ms)"
+set logscale y
 set rmargin 20
 set key right top
 set key outside maxcols 1 maxrows 7
-filename=sprintf("../../results/results/tsv/%s/iperf_tcp_1stream_retransmissions_stats.tsv", ARG1)
+filename=sprintf("../../results/results/tsv/%s/apache_100K_250_percentile_stats.tsv", ARG1)
 header = system("head -n 1 ".filename)
 label1 = word(header,1)
 label2 = word(header,2)

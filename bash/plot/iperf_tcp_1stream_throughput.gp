@@ -1,5 +1,7 @@
 set terminal pngcairo size 1280, 800
 outputular=sprintf("iperf_tcp_1stream_%s_throughput.png", ARG1)
+path=sprintf("../../results/results/png/%s/", ARG1)
+outputular=sprintf("%s%s", path, outputular)
 set output outputular
 titular=sprintf("iPerf3 TCP Throughput - 1 session - %s", ARG1)
 set title titular
