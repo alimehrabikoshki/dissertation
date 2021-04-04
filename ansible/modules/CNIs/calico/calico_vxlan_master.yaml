@@ -8,6 +8,16 @@
   connection: ssh
 
   tasks:
+   - name: Install eBPF iovisor
+     shell:
+       cmd: |
+             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4052245BD4284CDD
+             echo "deb https://repo.iovisor.org/apt/bionic  bionic  main" | sudo tee /etc/apt/sources.list.d/iovisor.list
+             sudo apt-get update -y
+             sudo apt-get install -y  bcc-tools libbcc-examples linux-headers-$(uname -r)
+             cd /usr/local/bin/
+             curl -O -L  https://github.com/projectcalico/calicoctl/releases/download/v3.18.1/calicoctl
+             chmod +x calicoctl
    - name: Copy cni YAML to node
      copy:
        src: /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/cnis/calico_vxlan.yaml
@@ -40,4 +50,25 @@
      become_user: k8s
      become_method: sudo
      shell: "kubectl wait --namespace=kube-system --for=condition=Ready pods --selector tier=control-plane --timeout=600s"
+   - name: Copy cni YAML to node
+     copy:
+       src: /mnt/c/Users/Ali/PycharmProjects/dissertation/kubernetes/cnis/calico_vxlan_ebpf.yaml
+       dest: /tmp/calico_vxlan_ebpf.yaml
+   - name: Save cluster master IP variable
+     replace:
+       path: /tmp/calico_vxlan_ebpf.yaml
+       regexp: '%CLUSTER_MASTER_IP%'
+       replace: "{{ cluster_master_internal_ip }}"
+   - name: Apply eBPF manifest
+     become: yes
+     become_user: k8s
+     become_method: sudo
+     shell:
+       cmd: |
+           kubectl apply -f  /tmp/calico_vxlan_ebpf.yaml
+           kubectl delete pod -n kube-system -l k8s-app=calico-node
+           kubectl delete pod -n kube-system -l k8s-app=calico-kube-controllers
+           kubectl wait --namespace=kube-system --for=condition=Ready pods -l k8s-app=calico-node --timeout=600s
+           kubectl patch ds -n kube-system kube-proxy -p '{"spec":{"template":{"spec":{"nodeSelector":{"non-calico": "true"}}}}}'
+           calicoctl patch felixconfiguration default --patch='{"spec": {"bpfEnabled": true}}'
 
