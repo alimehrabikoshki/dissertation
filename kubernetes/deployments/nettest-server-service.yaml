@@ -28,8 +28,6 @@ spec:
       - name: nettest-server
         image: alimehrabikoshki/nettest-server:v6
         command: [ "/nettest/start_services.sh"]
-#"",  "-c", "nginx", "-g", "'daemon off;'",  ";", "iperf3", "-s" ]
-#        args: [ "tail -f /dev/null" ]
         imagePullPolicy: Always
         ports:
         - containerPort: 5201
