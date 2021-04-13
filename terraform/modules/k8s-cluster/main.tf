@@ -23,8 +23,6 @@ module "master-node" {
 module "worker-node" {
   source = "../compute-instance"
   count = 2
-#  external_disk = module.data-disk.disk_id
-#  external_disk_mode = "READ_ONLY"
   instance_name = "${var.cluster_name}-worker-${count.index+1}"
   subnet_id = var.subnet_id
   machine_type = var.machine_type
