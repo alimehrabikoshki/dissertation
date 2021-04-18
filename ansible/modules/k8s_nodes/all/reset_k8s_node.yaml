@@ -8,7 +8,7 @@
   connection: ssh
 
   tasks:
-    - name: Configure sysctl to disable reverse path filtering and enable ip forwarding
+    - name: Stop and remove all Kubernetes related services and their related configurations
       shell:
         cmd: |
             kubeadm reset --force

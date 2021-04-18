@@ -31,7 +31,7 @@ spec:
         args: ["tail -f /dev/null"]
         env:
           - name: SERVER_IP
-            value: %SERVER_IP% #Modify per test using ansible/bash
+            value: %SERVER_IP%
           - name: CNI
             value: %CNI%
           - name: TESTCASE
