@@ -1,69 +1,69 @@
 Connecting to host 10.10.0.5, port 30000
-[  5] local 10.244.73.1 port 48651 connected to 10.10.0.5 port 30000
+[  5] local 10.244.73.1 port 49660 connected to 10.10.0.5 port 30000
 [ ID] Interval           Transfer     Bitrate         Total Datagrams
-[  5]   0.00-1.00   sec   167 MBytes  1397 Mbits/sec  122318  
-[  5]   1.00-2.00   sec   156 MBytes  1312 Mbits/sec  114848  
-[  5]   2.00-3.00   sec   144 MBytes  1211 Mbits/sec  105978  
-[  5]   3.00-4.00   sec   144 MBytes  1204 Mbits/sec  105386  
-[  5]   4.00-5.00   sec   148 MBytes  1238 Mbits/sec  108382  
-[  5]   5.00-6.00   sec   145 MBytes  1218 Mbits/sec  106584  
-[  5]   6.00-7.00   sec   146 MBytes  1221 Mbits/sec  106876  
-[  5]   7.00-8.00   sec   145 MBytes  1219 Mbits/sec  106745  
-[  5]   8.00-9.00   sec   147 MBytes  1231 Mbits/sec  107774  
-[  5]   9.00-10.00  sec   145 MBytes  1213 Mbits/sec  106148  
-[  5]  10.00-11.00  sec   144 MBytes  1211 Mbits/sec  106008  
-[  5]  11.00-12.00  sec   147 MBytes  1230 Mbits/sec  107641  
-[  5]  12.00-13.00  sec   145 MBytes  1217 Mbits/sec  106493  
-[  5]  13.00-14.00  sec   145 MBytes  1217 Mbits/sec  106523  
-[  5]  14.00-15.00  sec   142 MBytes  1195 Mbits/sec  104637  
-[  5]  15.00-16.00  sec   143 MBytes  1199 Mbits/sec  104977  
-[  5]  16.00-17.00  sec   145 MBytes  1214 Mbits/sec  106259  
-[  5]  17.00-18.00  sec   139 MBytes  1168 Mbits/sec  102274  
-[  5]  18.00-19.00  sec   140 MBytes  1175 Mbits/sec  102857  
-[  5]  19.00-20.00  sec   142 MBytes  1190 Mbits/sec  104181  
-[  5]  20.00-21.00  sec   143 MBytes  1200 Mbits/sec  105015  
-[  5]  21.00-22.00  sec   147 MBytes  1230 Mbits/sec  107629  
-[  5]  22.00-23.00  sec   144 MBytes  1208 Mbits/sec  105719  
-[  5]  23.00-24.00  sec   147 MBytes  1230 Mbits/sec  107695  
-[  5]  24.00-25.00  sec   146 MBytes  1224 Mbits/sec  107114  
-[  5]  25.00-26.00  sec   145 MBytes  1219 Mbits/sec  106667  
-[  5]  26.00-27.00  sec   147 MBytes  1230 Mbits/sec  107705  
-[  5]  27.00-28.00  sec   145 MBytes  1218 Mbits/sec  106654  
-[  5]  28.00-29.00  sec   146 MBytes  1223 Mbits/sec  107053  
-[  5]  29.00-30.00  sec   145 MBytes  1220 Mbits/sec  106772  
-[  5]  30.00-31.00  sec   146 MBytes  1224 Mbits/sec  107151  
-[  5]  31.00-32.00  sec   145 MBytes  1213 Mbits/sec  106186  
-[  5]  32.00-33.00  sec   144 MBytes  1209 Mbits/sec  105845  
-[  5]  33.00-34.00  sec   144 MBytes  1208 Mbits/sec  105766  
-[  5]  34.00-35.00  sec   146 MBytes  1221 Mbits/sec  106862  
-[  5]  35.00-36.00  sec   146 MBytes  1226 Mbits/sec  107339  
-[  5]  36.00-37.00  sec   144 MBytes  1208 Mbits/sec  105739  
-[  5]  37.00-38.00  sec   144 MBytes  1206 Mbits/sec  105585  
-[  5]  38.00-39.00  sec   144 MBytes  1212 Mbits/sec  106090  
-[  5]  39.00-40.00  sec   145 MBytes  1217 Mbits/sec  106501  
-[  5]  40.00-41.00  sec   143 MBytes  1198 Mbits/sec  104907  
-[  5]  41.00-42.00  sec   143 MBytes  1196 Mbits/sec  104711  
-[  5]  42.00-43.00  sec   144 MBytes  1209 Mbits/sec  105854  
-[  5]  43.00-44.00  sec   145 MBytes  1217 Mbits/sec  106559  
-[  5]  44.00-45.00  sec   142 MBytes  1189 Mbits/sec  104089  
-[  5]  45.00-46.00  sec   143 MBytes  1199 Mbits/sec  104919  
-[  5]  46.00-47.00  sec   145 MBytes  1220 Mbits/sec  106821  
-[  5]  47.00-48.00  sec   143 MBytes  1202 Mbits/sec  105184  
-[  5]  48.00-49.00  sec   145 MBytes  1216 Mbits/sec  106428  
-[  5]  49.00-50.00  sec   146 MBytes  1221 Mbits/sec  106923  
-[  5]  50.00-51.00  sec   144 MBytes  1207 Mbits/sec  105615  
-[  5]  51.00-52.00  sec   145 MBytes  1217 Mbits/sec  106497  
-[  5]  52.00-53.00  sec   142 MBytes  1195 Mbits/sec  104594  
-[  5]  53.00-54.00  sec   145 MBytes  1215 Mbits/sec  106339  
-[  5]  54.00-55.00  sec   143 MBytes  1201 Mbits/sec  105120  
-[  5]  55.00-56.00  sec   145 MBytes  1213 Mbits/sec  106204  
-[  5]  56.00-57.00  sec   145 MBytes  1220 Mbits/sec  106764  
-[  5]  57.00-58.00  sec   143 MBytes  1203 Mbits/sec  105318  
-[  5]  58.00-59.00  sec   143 MBytes  1199 Mbits/sec  104998  
-[  5]  59.00-60.00  sec   144 MBytes  1206 Mbits/sec  105564  
+[  5]   0.00-1.00   sec   142 MBytes  1194 Mbits/sec  104507  
+[  5]   1.00-2.00   sec   144 MBytes  1209 Mbits/sec  105792  
+[  5]   2.00-3.00   sec   145 MBytes  1213 Mbits/sec  106149  
+[  5]   3.00-4.00   sec   143 MBytes  1200 Mbits/sec  105071  
+[  5]   4.00-5.00   sec   143 MBytes  1203 Mbits/sec  105263  
+[  5]   5.00-6.00   sec   145 MBytes  1217 Mbits/sec  106506  
+[  5]   6.00-7.00   sec   145 MBytes  1217 Mbits/sec  106498  
+[  5]   7.00-8.00   sec   144 MBytes  1206 Mbits/sec  105552  
+[  5]   8.00-9.00   sec   144 MBytes  1208 Mbits/sec  105771  
+[  5]   9.00-10.00  sec   145 MBytes  1213 Mbits/sec  106188  
+[  5]  10.00-11.00  sec   144 MBytes  1206 Mbits/sec  105605  
+[  5]  11.00-12.00  sec   144 MBytes  1208 Mbits/sec  105763  
+[  5]  12.00-13.00  sec   146 MBytes  1222 Mbits/sec  106935  
+[  5]  13.00-14.00  sec   144 MBytes  1210 Mbits/sec  105922  
+[  5]  14.00-15.00  sec   144 MBytes  1212 Mbits/sec  106092  
+[  5]  15.00-16.00  sec   145 MBytes  1215 Mbits/sec  106392  
+[  5]  16.00-17.00  sec   150 MBytes  1256 Mbits/sec  109909  
+[  5]  17.00-18.00  sec   148 MBytes  1239 Mbits/sec  108475  
+[  5]  18.00-19.00  sec   146 MBytes  1229 Mbits/sec  107554  
+[  5]  19.00-20.00  sec   149 MBytes  1252 Mbits/sec  109563  
+[  5]  20.00-21.00  sec   148 MBytes  1245 Mbits/sec  108940  
+[  5]  21.00-22.00  sec   148 MBytes  1241 Mbits/sec  108635  
+[  5]  22.00-23.00  sec   149 MBytes  1253 Mbits/sec  109663  
+[  5]  23.00-24.00  sec   145 MBytes  1213 Mbits/sec  106207  
+[  5]  24.00-25.00  sec   145 MBytes  1215 Mbits/sec  106389  
+[  5]  25.00-26.00  sec   142 MBytes  1193 Mbits/sec  104399  
+[  5]  26.00-27.00  sec   145 MBytes  1218 Mbits/sec  106607  
+[  5]  27.00-28.00  sec   145 MBytes  1214 Mbits/sec  106297  
+[  5]  28.00-29.00  sec   143 MBytes  1202 Mbits/sec  105238  
+[  5]  29.00-30.00  sec   145 MBytes  1216 Mbits/sec  106403  
+[  5]  30.00-31.00  sec   144 MBytes  1207 Mbits/sec  105685  
+[  5]  31.00-32.00  sec   142 MBytes  1192 Mbits/sec  104310  
+[  5]  32.00-33.00  sec   147 MBytes  1231 Mbits/sec  107716  
+[  5]  33.00-34.00  sec   143 MBytes  1202 Mbits/sec  105222  
+[  5]  34.00-35.00  sec   144 MBytes  1205 Mbits/sec  105494  
+[  5]  35.00-36.00  sec   145 MBytes  1214 Mbits/sec  106243  
+[  5]  36.00-37.00  sec   144 MBytes  1204 Mbits/sec  105373  
+[  5]  37.00-38.00  sec   145 MBytes  1218 Mbits/sec  106569  
+[  5]  38.00-39.00  sec   143 MBytes  1196 Mbits/sec  104686  
+[  5]  39.00-40.00  sec   146 MBytes  1225 Mbits/sec  107213  
+[  5]  40.00-41.00  sec   147 MBytes  1232 Mbits/sec  107864  
+[  5]  41.00-42.00  sec   143 MBytes  1196 Mbits/sec  104703  
+[  5]  42.00-43.00  sec   140 MBytes  1174 Mbits/sec  102748  
+[  5]  43.00-44.00  sec   142 MBytes  1192 Mbits/sec  104330  
+[  5]  44.00-45.00  sec   143 MBytes  1196 Mbits/sec  104649  
+[  5]  45.00-46.00  sec   143 MBytes  1196 Mbits/sec  104684  
+[  5]  46.00-47.00  sec   145 MBytes  1214 Mbits/sec  106262  
+[  5]  47.00-48.00  sec   149 MBytes  1249 Mbits/sec  109321  
+[  5]  48.00-49.00  sec   151 MBytes  1268 Mbits/sec  111011  
+[  5]  49.00-50.00  sec   149 MBytes  1254 Mbits/sec  109763  
+[  5]  50.00-51.00  sec   145 MBytes  1217 Mbits/sec  106543  
+[  5]  51.00-52.00  sec   143 MBytes  1201 Mbits/sec  105137  
+[  5]  52.00-53.00  sec   144 MBytes  1206 Mbits/sec  105546  
+[  5]  53.00-54.00  sec   143 MBytes  1199 Mbits/sec  104976  
+[  5]  54.00-55.00  sec   142 MBytes  1193 Mbits/sec  104427  
+[  5]  55.00-56.00  sec   143 MBytes  1198 Mbits/sec  104848  
+[  5]  56.00-57.00  sec   140 MBytes  1171 Mbits/sec  102473  
+[  5]  57.00-58.00  sec   145 MBytes  1214 Mbits/sec  106268  
+[  5]  58.00-59.00  sec   144 MBytes  1209 Mbits/sec  105848  
+[  5]  59.00-60.00  sec   144 MBytes  1205 Mbits/sec  105520  
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-[  5]   0.00-60.00  sec  8.49 GBytes  1216 Mbits/sec  0.000 ms  0/6387384 (0%)  sender
-[  5]   0.00-60.01  sec  8.48 GBytes  1214 Mbits/sec  0.008 ms  12555/6387384 (0.2%)  receiver
+[  5]   0.00-60.00  sec  8.48 GBytes  1214 Mbits/sec  0.000 ms  0/6373717 (0%)  sender
+[  5]   0.00-60.01  sec  8.47 GBytes  1212 Mbits/sec  0.012 ms  5618/6373688 (0.088%)  receiver
 
 iperf Done.

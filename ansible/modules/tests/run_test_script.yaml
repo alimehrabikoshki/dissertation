@@ -27,7 +27,7 @@
       replace:
         path: /tmp/nettest-client-deployment.yaml
         regexp: '%SERVER_IP%'
-        replace: "{{ lookup('file', '/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/vars_files/serverip.txt') }}"
+        replace: "{{ lookup('file', '/mnt/c/Users/Ali/PycharmProjects/dissertation/ansible/server_ip/serverip.txt') }}"
     - name: Save CNI env variable
       replace:
         path: /tmp/nettest-client-deployment.yaml
