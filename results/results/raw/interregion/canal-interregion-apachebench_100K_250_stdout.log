@@ -2,41 +2,47 @@ This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking 10.10.0.5 (be patient)
+Benchmarking 10.10.0.6 (be patient)
 
 
 Server Software:        nginx/1.18.0
-Server Hostname:        10.10.0.5
+Server Hostname:        10.10.0.6
 Server Port:            30080
 
 Document Path:          /
 Document Length:        612 bytes
 
 Concurrency Level:      250
-Time taken for tests:   8.168 seconds
+Time taken for tests:   10.125 seconds
 Complete requests:      100000
 Failed requests:        0
 Total transferred:      85400000 bytes
 HTML transferred:       61200000 bytes
-Requests per second:    12242.75 [#/sec] (mean)
-Time per request:       20.420 [ms] (mean)
-Time per request:       0.082 [ms] (mean, across all concurrent requests)
-Transfer rate:          10210.27 [Kbytes/sec] received
+Requests per second:    9876.45 [#/sec] (mean)
+Time per request:       25.313 [ms] (mean)
+Time per request:       0.101 [ms] (mean, across all concurrent requests)
+Transfer rate:          8236.81 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        9   10   3.3     10    1037
-Processing:     9   10   0.8     10      32
-Waiting:        9   10   0.7     10      32
-Total:         18   20   3.5     20    1048
+Connect:       11   13   0.8     12      20
+Processing:    11   13   0.9     12      22
+Waiting:       11   13   0.8     12      20
+Total:         23   25   1.7     25      41
+WARNING: The median and mean for the initial connection time are not within a normal deviation
+        These results are probably not that reliable.
+WARNING: The median and mean for the processing time are not within a normal deviation
+        These results are probably not that reliable.
+WARNING: The median and mean for the waiting time are not within a normal deviation
+        These results are probably not that reliable.
 
 Percentage of the requests served within a certain time (ms)
-  50%     20
-  66%     21
-  75%     21
-  80%     21
-  90%     21
-  95%     22
-  98%     23
-  99%     24
- 100%   1048 (longest request)
+  50%     25
+  66%     25
+  75%     26
+  80%     27
+  90%     28
+  95%     28
+  98%     29
+  99%     29
+ 100%     41 (longest request)

@@ -13,7 +13,7 @@ module "master-node" {
   subnet_id = var.subnet_id
   machine_type = "e2-standard-2"
   preemptible = var.preemptible
-  instance_zone = data.google_compute_zones.available.names[count.index]
+  instance_zone = data.google_compute_zones.available.names[1]
   ssh_pubkey = var.ssh_pubkey
   gcp_project = var.gcp_project
   gcp_region = var.gcp_region
@@ -29,7 +29,7 @@ module "worker-node" {
   subnet_id = var.subnet_id
   machine_type = var.machine_type
   preemptible = var.preemptible
-  instance_zone = data.google_compute_zones.available.names[2]
+  instance_zone = data.google_compute_zones.available.names[1]
   ssh_pubkey = var.ssh_pubkey
   gcp_project = var.gcp_project
   gcp_region = var.gcp_region
