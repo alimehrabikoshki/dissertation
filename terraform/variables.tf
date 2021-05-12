@@ -17,7 +17,7 @@ variable "gcp_regionB_zone" {
 variable "gcp_project" { 
   type        = string 
   description = "GCP project name"
-  default     = "silver-theme-308916"
+  default     = "divine-aegis-312017"
 } 
 
 variable "gcp_auth_file" { 

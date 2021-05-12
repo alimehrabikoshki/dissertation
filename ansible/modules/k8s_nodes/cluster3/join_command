@@ -1,1 +1,1 @@
-kubeadm join 10.20.0.3:6443 --token hyan5t.8223xl927vrt9m29 --discovery-token-ca-cert-hash sha256:757eca405062dbb9da3a2ebd41443cfeea210505ec97f349ce4ea5473466e02a 
+kubeadm join 10.20.0.2:6443 --token n3zk90.ym0ddiiu53cjklze --discovery-token-ca-cert-hash sha256:7ad25397c6b2cc166e9ccae337b3f7b0c1d99da39c1c3f3ee9b5523fbe220309 

@@ -13,5 +13,5 @@ set boxwidth 0.6 relative
 set style fill solid 0.5
 
 filename=sprintf("../../results/results/tsv/%s/apache_100K_250_avg_resptime_stats.tsv", ARG1)
-plot filename using 2:xtic(1) title ""  with boxes fill, \
-    ""  using 0:($2+1):(sprintf("%3.f",$2)) with labels notitle
+plot filename using 2:xtic(1) title ""  with boxes linecolor rgb "blue", \
+    ""  using 0:($2+0.3):(sprintf("%3.2f",$2)) with labels notitle

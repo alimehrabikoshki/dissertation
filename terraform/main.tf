@@ -24,6 +24,7 @@ module "provision-testbed" {
 
 }
 
+/*
 module "test-calico" {
   depends_on = [module.provision-testbed]
   source = "./modules/configure-cni"
@@ -45,6 +46,7 @@ module "test-calico" {
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
+
 
 module "test-flannel" {
   depends_on = [module.test-calico]
@@ -68,6 +70,7 @@ module "test-flannel" {
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
 
+
 module "test-kuberouter" {
   depends_on = [module.test-flannel]
   source = "./modules/configure-cni"
@@ -89,6 +92,8 @@ module "test-kuberouter" {
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
+
+
 module "test-cilium" {
   depends_on = [module.test-kuberouter]
   source = "./modules/configure-cni"
@@ -110,6 +115,8 @@ module "test-cilium" {
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
+
+
 
 module "test-canal" {
   depends_on = [module.test-cilium]
@@ -133,8 +140,9 @@ module "test-canal" {
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
 
+
 module "test-weavenet" {
-  depends_on = [module.test-canal]
+ depends_on = [module.test-canal]
   source = "./modules/configure-cni"
 
   cni = "weavenet"
@@ -154,9 +162,10 @@ module "test-weavenet" {
   cluster3_worker1_internal_ip = module.provision-testbed.cluster3-worker1-ip
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
+*/
 
 module "test-calico_vxlan" {
-  depends_on = [module.test-weavenet]
+ # depends_on = [module.test-weavenet]
   source = "./modules/configure-cni"
 
   cni = "calico_vxlan"
@@ -177,7 +186,7 @@ module "test-calico_vxlan" {
   cluster3_worker1_public_ip = module.provision-testbed.cluster3-worker1-public-ip
 }
 
-
+/*
 resource "null_resource" "parse_results" {
   depends_on = [module.test-calico_vxlan]
   provisioner "local-exec" {
@@ -197,3 +206,4 @@ cd /mnt/c/Users/Ali/PycharmProjects/dissertation/bash/plot;
 EOT
   }
 }
+*/

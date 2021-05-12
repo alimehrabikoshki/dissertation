@@ -11,7 +11,9 @@ set ylabel "Average Throughput (Mbit/s)"
 
 set boxwidth 0.6 relative
 set style fill solid 0.5
+set linetype 1 lc rgb "red"
+
 
 filename=sprintf("../../results/results/tsv/%s/iperf_tcp_20stream_avg_bandwidth_stats.tsv", ARG1)
-plot filename using 2:xtic(1) title ""  with boxes fill, \
-    ""  using 0:($2+200):(sprintf("%3.f",$2)) with labels notitle
+plot filename using 2:xtic(1) title ""  with boxes linecolor rgb "blue", \
+    ""  using 0:($2+100):(sprintf("%3.f",$2)) with labels notitle
